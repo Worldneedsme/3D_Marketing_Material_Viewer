@@ -8,8 +8,14 @@ export const FULL_H_MM = TRIM_H_MM + BLEED_MM * 2;
 export const PANEL_W_MM = TRIM_W_MM / 2;
 export const FOLD_X_MM = BLEED_MM + PANEL_W_MM;
 
+/** Craft-paper table tent, one standing face, millimetres. */
+export const TENT_W_MM = 100;
+export const TENT_H_MM = 170;
+
 /** Three.js units: 1 unit = 100 mm. */
 export const MM = 0.01;
+export const TENT_W = TENT_W_MM * MM;
+export const TENT_H = TENT_H_MM * MM;
 export const PANEL_W = PANEL_W_MM * MM;
 export const PANEL_H = TRIM_H_MM * MM;
 export const PAPER_THICKNESS = 0.014;

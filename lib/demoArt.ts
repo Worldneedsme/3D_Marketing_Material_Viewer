@@ -1,4 +1,4 @@
-import { FULL_H_MM, FULL_W_MM, FOLD_X_MM } from "@/lib/print";
+import { FULL_H_MM, FULL_W_MM, FOLD_X_MM, TENT_H_MM, TENT_W_MM } from "@/lib/print";
 
 const PX = 4;
 
@@ -67,6 +67,42 @@ export function createDemoSheet(kind: "outside" | "inside") {
       "Visible on the open spread",
     );
   }
+
+  return canvas.toDataURL("image/jpeg", 0.92);
+}
+
+export function createTentFace(side: "front" | "back") {
+  const px = 8;
+  const width = TENT_W_MM;
+  const height = TENT_H_MM;
+  const canvas = document.createElement("canvas");
+  canvas.width = width * px;
+  canvas.height = height * px;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return "";
+
+  ctx.scale(px, px);
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(0, 0, width, height);
+
+  const titleY = height * 0.46;
+  ctx.textAlign = "center";
+  ctx.fillStyle = "#1c1917";
+  ctx.font = "600 3.4px ui-sans-serif, sans-serif";
+  ctx.fillText(side === "front" ? "FRONT FACE" : "BACK FACE", width / 2, titleY - 16);
+  ctx.font = "500 13px Georgia, 'Times New Roman', serif";
+  ctx.fillText(side === "front" ? "Table tent" : "See you there", width / 2, titleY + 2);
+
+  ctx.strokeStyle = "rgba(28, 25, 23, 0.35)";
+  ctx.lineWidth = 0.35;
+  ctx.beginPath();
+  ctx.moveTo(width / 2 - 16, titleY + 12);
+  ctx.lineTo(width / 2 + 16, titleY + 12);
+  ctx.stroke();
+
+  ctx.font = "400 3.2px ui-sans-serif, sans-serif";
+  ctx.fillStyle = "rgba(28, 25, 23, 0.72)";
+  ctx.fillText("100 × 170 mm", width / 2, titleY + 22);
 
   return canvas.toDataURL("image/jpeg", 0.92);
 }
