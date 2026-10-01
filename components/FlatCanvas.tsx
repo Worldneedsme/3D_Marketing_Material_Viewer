@@ -163,9 +163,10 @@ function Piece({
 
   const pad = product.depth >= 4;
   const sheets = pad ? 8 : 1;
-  const glueH = pad ? 11 * MM : 0;
-  const glueW = (product.cutW - 2) * MM;
-  const glueY = height / 2 - (product.bleed + 1) * MM - glueH / 2;
+  const glueH = pad ? 12 * MM : 0;
+  const glueDepth = 0.008;
+  const glueW = product.cutW * MM;
+  const glueY = height / 2 - product.bleed * MM - glueH / 2;
 
   return (
     <group position={[PIECE_X, TABLE_TOP + height / 2, 0]}>
@@ -189,21 +190,21 @@ function Piece({
         />
       </mesh>
       {rules ? (
-        <mesh position={[0, 0, depth / 2 + 0.001]}>
+        <mesh position={[0, 0, depth / 2 + 0.002]}>
           <planeGeometry args={[width, height]} />
-          <meshBasicMaterial map={rules} transparent depthWrite={false} polygonOffset polygonOffsetFactor={-2} />
-        </mesh>
-      ) : null}
-      {pad ? (
-        <mesh position={[0, glueY, depth / 2 + 0.0016]}>
-          <planeGeometry args={[glueW, glueH]} />
-          <meshPhysicalMaterial color="#d4b483" roughness={0.35} metalness={0} clearcoat={0.45} transparent opacity={0.72} depthWrite={false} />
+          <meshBasicMaterial map={rules} transparent depthWrite={false} />
         </mesh>
       ) : null}
       {guide ? (
-        <mesh position={[0, 0, depth / 2 + 0.0022]}>
+        <mesh position={[0, 0, depth / 2 + 0.004]}>
           <planeGeometry args={[width, height]} />
-          <meshBasicMaterial map={guide} transparent depthWrite={false} polygonOffset polygonOffsetFactor={-2} />
+          <meshBasicMaterial map={guide} transparent depthWrite={false} />
+        </mesh>
+      ) : null}
+      {pad ? (
+        <mesh position={[0, glueY, depth / 2 + 0.008 + glueDepth / 2]} renderOrder={2} castShadow>
+          <boxGeometry args={[glueW, glueH, glueDepth]} />
+          <meshPhysicalMaterial color="#c4a574" roughness={0.4} metalness={0} clearcoat={0.3} />
         </mesh>
       ) : null}
     </group>
