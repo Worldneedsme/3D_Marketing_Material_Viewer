@@ -134,8 +134,8 @@ export function createFlatFace(id: FlatId) {
   ctx.fillRect(bleed, bleed, product.cutW, product.cutH);
 
   if (id === "notepad") {
-    ctx.strokeStyle = "#7e8b98";
-    ctx.lineWidth = 0.35;
+    ctx.strokeStyle = "#3e5164";
+    ctx.lineWidth = 0.7;
     const left = bleed + 4;
     const right = fullW - bleed - 4;
     const bottom = fullH - bleed - 4;

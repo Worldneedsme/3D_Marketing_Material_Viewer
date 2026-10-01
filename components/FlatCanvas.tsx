@@ -27,7 +27,10 @@ function useSheetMap(url: string | null) {
       texture.colorSpace = THREE.SRGBColorSpace;
       texture.wrapS = THREE.ClampToEdgeWrapping;
       texture.wrapT = THREE.ClampToEdgeWrapping;
-      texture.anisotropy = 8;
+      texture.generateMipmaps = false;
+      texture.minFilter = THREE.LinearFilter;
+      texture.magFilter = THREE.LinearFilter;
+      texture.anisotropy = 16;
       texture.needsUpdate = true;
       setMap(texture);
     });
@@ -60,6 +63,37 @@ function strokeRect(
   ctx.strokeStyle = color;
   ctx.lineWidth = Math.max(3, px * 0.55);
   ctx.strokeRect(x, y, w, h);
+}
+
+/** Ruled lines for the glued pad. Drawn unlit so they stay visible at the preview distance. */
+function rulesTexture(fullW: number, fullH: number, bleed: number) {
+  const px = 10;
+  const canvas = document.createElement("canvas");
+  canvas.width = Math.round(fullW * px);
+  canvas.height = Math.round(fullH * px);
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return null;
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.strokeStyle = "#3e5164";
+  ctx.lineWidth = px * 0.7;
+  const left = (bleed + 4) * px;
+  const right = (fullW - bleed - 4) * px;
+  const bottom = (fullH - bleed - 4) * px;
+  for (let y = (bleed + 16) * px; y <= bottom; y += 5 * px) {
+    ctx.beginPath();
+    ctx.moveTo(left, y);
+    ctx.lineTo(right, y);
+    ctx.stroke();
+  }
+
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  texture.generateMipmaps = false;
+  texture.minFilter = THREE.LinearFilter;
+  texture.magFilter = THREE.LinearFilter;
+  texture.needsUpdate = true;
+  return texture;
 }
 
 /** Red cut line stays on the sheet. Blue starts 5 mm inside that line. */
@@ -115,10 +149,17 @@ function Piece({
     () => guideTexture(fullW, fullH, product.bleed, product.safe, showSafe),
     [fullW, fullH, product.bleed, product.safe, showSafe],
   );
+  const rules = useMemo(
+    () => (productId === "notepad" ? rulesTexture(fullW, fullH, product.bleed) : null),
+    [productId, fullW, fullH, product.bleed],
+  );
 
   useEffect(() => {
-    return () => guide?.dispose();
-  }, [guide]);
+    return () => {
+      guide?.dispose();
+      rules?.dispose();
+    };
+  }, [guide, rules]);
 
   const pad = product.depth >= 4;
   const sheets = pad ? 8 : 1;
@@ -147,14 +188,20 @@ function Piece({
           polygonOffsetFactor={-1}
         />
       </mesh>
+      {rules ? (
+        <mesh position={[0, 0, depth / 2 + 0.001]}>
+          <planeGeometry args={[width, height]} />
+          <meshBasicMaterial map={rules} transparent depthWrite={false} polygonOffset polygonOffsetFactor={-2} />
+        </mesh>
+      ) : null}
       {pad ? (
-        <mesh position={[0, glueY, depth / 2 + 0.0008]}>
+        <mesh position={[0, glueY, depth / 2 + 0.0016]}>
           <planeGeometry args={[glueW, glueH]} />
           <meshPhysicalMaterial color="#d4b483" roughness={0.35} metalness={0} clearcoat={0.45} transparent opacity={0.72} depthWrite={false} />
         </mesh>
       ) : null}
       {guide ? (
-        <mesh position={[0, 0, depth / 2 + 0.0014]}>
+        <mesh position={[0, 0, depth / 2 + 0.0022]}>
           <planeGeometry args={[width, height]} />
           <meshBasicMaterial map={guide} transparent depthWrite={false} polygonOffset polygonOffsetFactor={-2} />
         </mesh>
