@@ -8,7 +8,7 @@ export function ArtworkUpload({
   hint,
   imageUrl,
   fileName,
-  guides,
+  showSafe,
   labels,
   onFile,
 }: {
@@ -16,7 +16,7 @@ export function ArtworkUpload({
   hint: string;
   imageUrl: string | null;
   fileName: string | null;
-  guides: boolean;
+  showSafe: boolean;
   labels: { left: string; right: string };
   onFile: (file: File) => void;
 }) {
@@ -67,7 +67,7 @@ export function ArtworkUpload({
         ) : (
           <div className="flex h-full items-center justify-center text-xs text-stone-500">Drop an image</div>
         )}
-        {guides && imageUrl ? <GuidelineOverlay labels={labels} /> : null}
+        {imageUrl ? <GuidelineOverlay labels={labels} showSafe={showSafe} /> : null}
       </div>
     </label>
   );

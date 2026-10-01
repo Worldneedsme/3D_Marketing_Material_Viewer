@@ -9,8 +9,10 @@ const safeH = TRIM_H_MM - SAFE_MM * 2;
 
 export function GuidelineOverlay({
   labels,
+  showSafe,
 }: {
   labels: { left: string; right: string };
+  showSafe: boolean;
 }) {
   return (
     <svg
@@ -21,7 +23,7 @@ export function GuidelineOverlay({
     >
       <GuideRect x={0.4} y={0.4} w={FULL_W_MM - 0.8} h={FULL_H_MM - 0.8} color="#111111" />
       <GuideRect x={cutX} y={cutY} w={TRIM_W_MM} h={TRIM_H_MM} color="#e10600" />
-      <GuideRect x={safeX} y={safeY} w={safeW} h={safeH} color="#1d4ed8" />
+      {showSafe ? <GuideRect x={safeX} y={safeY} w={safeW} h={safeH} color="#1d4ed8" dashed /> : null}
       <line
         x1={FOLD_X_MM}
         y1={cutY}
@@ -52,17 +54,20 @@ function GuideRect({
   w,
   h,
   color,
+  dashed = false,
 }: {
   x: number;
   y: number;
   w: number;
   h: number;
   color: string;
+  dashed?: boolean;
 }) {
+  const dash = dashed ? "2.4 1.6" : undefined;
   return (
     <>
-      <rect x={x} y={y} width={w} height={h} fill="none" stroke="#ffffff" strokeWidth={1.15} />
-      <rect x={x} y={y} width={w} height={h} fill="none" stroke={color} strokeWidth={0.45} />
+      <rect x={x} y={y} width={w} height={h} fill="none" stroke="#ffffff" strokeWidth={1.15} strokeDasharray={dash} />
+      <rect x={x} y={y} width={w} height={h} fill="none" stroke={color} strokeWidth={0.45} strokeDasharray={dash} />
     </>
   );
 }

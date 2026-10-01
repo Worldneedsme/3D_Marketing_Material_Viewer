@@ -1,4 +1,4 @@
-import { FULL_H_MM, FULL_W_MM, FOLD_X_MM, TENT_H_MM, TENT_W_MM } from "@/lib/print";
+import { FLAT_PRODUCTS, FULL_H_MM, FULL_W_MM, FOLD_X_MM, TENT_H_MM, TENT_W_MM, type FlatId } from "@/lib/print";
 
 const PX = 4;
 
@@ -105,4 +105,59 @@ export function createTentFace(side: "front" | "back") {
   ctx.fillText("100 × 170 mm", width / 2, titleY + 22);
 
   return canvas.toDataURL("image/jpeg", 0.92);
+}
+
+const FLAT_TITLES: Record<FlatId, string> = {
+  label: "Horizontal label",
+  magnet: "Custom magnet",
+  card: "Business card",
+  notepad: "Lined notepad",
+};
+
+/** Full press sheet, including the 3 mm bleed, so the 3D view can trim to the cut line. */
+export function createFlatFace(id: FlatId) {
+  const product = FLAT_PRODUCTS[id];
+  const bleed = product.bleed;
+  const fullW = product.cutW + bleed * 2;
+  const fullH = product.cutH + bleed * 2;
+  const px = 10;
+  const canvas = document.createElement("canvas");
+  canvas.width = Math.round(fullW * px);
+  canvas.height = Math.round(fullH * px);
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return "";
+
+  ctx.scale(px, px);
+  ctx.fillStyle = "#e24b3b";
+  ctx.fillRect(0, 0, fullW, fullH);
+  ctx.fillStyle = "#f7f4ee";
+  ctx.fillRect(bleed, bleed, product.cutW, product.cutH);
+
+  if (id === "notepad") {
+    ctx.strokeStyle = "#7e8b98";
+    ctx.lineWidth = 0.35;
+    const left = bleed + 4;
+    const right = fullW - bleed - 4;
+    const bottom = fullH - bleed - 4;
+    for (let y = bleed + 16; y <= bottom; y += 5) {
+      ctx.beginPath();
+      ctx.moveTo(left, y);
+      ctx.lineTo(right, y);
+      ctx.stroke();
+    }
+    ctx.fillStyle = "rgba(201, 164, 96, 0.55)";
+    ctx.fillRect(bleed, bleed, product.cutW, 12);
+  }
+
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillStyle = "#1c1917";
+  const titleSize = Math.min(product.cutW, product.cutH) * (id === "notepad" ? 0.065 : 0.11);
+  ctx.font = `500 ${titleSize}px Georgia, 'Times New Roman', serif`;
+  ctx.fillText(FLAT_TITLES[id], fullW / 2, fullH / 2 - titleSize * 0.35);
+  ctx.font = `400 ${titleSize * 0.38}px ui-sans-serif, sans-serif`;
+  ctx.fillStyle = "rgba(28, 25, 23, 0.72)";
+  ctx.fillText(`${product.cutW} × ${product.cutH} mm`, fullW / 2, fullH / 2 + titleSize * 0.7);
+
+  return canvas.toDataURL("image/png");
 }

@@ -8,10 +8,8 @@ import {
   BLEED_MM,
   FULL_H_MM,
   FULL_W_MM,
-  PANEL_H,
-  PANEL_W,
-  PANEL_W_MM,
-  TRIM_H_MM,
+  MM,
+  SAFE_MM,
   type PanelSide,
 } from "@/lib/print";
 import { ScaleSet, SCALE_HALF } from "@/components/ScaleSet";
@@ -23,6 +21,8 @@ export type Pose = "stand" | "table";
 const CLOSED_LIMIT = 179.15;
 const NORMAL_SCALE = new THREE.Vector2(0.16, 0.16);
 const SHEET = 0.0045;
+const HALF_W = (FULL_W_MM / 2) * MM;
+const SHEET_H = FULL_H_MM * MM;
 
 function paperNormalMap() {
   const size = 256;
@@ -48,13 +48,13 @@ function paperNormalMap() {
 }
 
 function bakePanel(image: CanvasImageSource & { width: number; height: number }, side: PanelSide, flipX: boolean) {
-  const u0 = (side === "left" ? BLEED_MM : BLEED_MM + PANEL_W_MM) / FULL_W_MM;
-  const v0 = BLEED_MM / FULL_H_MM;
-  const uSpan = PANEL_W_MM / FULL_W_MM;
-  const vSpan = TRIM_H_MM / FULL_H_MM;
+  const u0 = side === "left" ? 0 : 0.5;
+  const v0 = 0;
+  const uSpan = 0.5;
+  const vSpan = 1;
   const canvas = document.createElement("canvas");
   canvas.width = 1024;
-  canvas.height = Math.round(1024 * (TRIM_H_MM / PANEL_W_MM));
+  canvas.height = Math.round(1024 * (FULL_H_MM / (FULL_W_MM / 2)));
   const ctx = canvas.getContext("2d");
   if (!ctx) return null;
   if (flipX) {
@@ -107,6 +107,88 @@ function usePanelMap(url: string | null, side: PanelSide, flipX: boolean) {
   return map;
 }
 
+function strokeOpen(
+  ctx: CanvasRenderingContext2D,
+  color: string,
+  dashed: boolean,
+  px: number,
+  draw: () => void,
+) {
+  ctx.lineJoin = "miter";
+  ctx.setLineDash(dashed ? [px * 1.4, px * 0.85] : []);
+  ctx.strokeStyle = "#ffffff";
+  ctx.lineWidth = Math.max(6, px * 1.35);
+  draw();
+  ctx.stroke();
+  ctx.strokeStyle = color;
+  ctx.lineWidth = Math.max(4, px * 0.85);
+  draw();
+  ctx.stroke();
+}
+
+/** Full half-sheet. Red cut stays. Blue starts 5 mm inside it. The spine edge is the fold. */
+function panelGuide(side: PanelSide, showSafe: boolean) {
+  const px = 12;
+  const width = Math.round((FULL_W_MM / 2) * px);
+  const height = Math.round(FULL_H_MM * px);
+  const canvas = document.createElement("canvas");
+  canvas.width = width;
+  canvas.height = height;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return null;
+
+  const bleed = BLEED_MM * px;
+  const safe = (BLEED_MM + SAFE_MM) * px;
+  const cut = () => {
+    ctx.beginPath();
+    if (side === "left") {
+      ctx.moveTo(width, bleed);
+      ctx.lineTo(bleed, bleed);
+      ctx.lineTo(bleed, height - bleed);
+      ctx.lineTo(width, height - bleed);
+    } else {
+      ctx.moveTo(0, bleed);
+      ctx.lineTo(width - bleed, bleed);
+      ctx.lineTo(width - bleed, height - bleed);
+      ctx.lineTo(0, height - bleed);
+    }
+  };
+  strokeOpen(ctx, "#e10600", false, px, cut);
+
+  if (showSafe) {
+    const safeLine = () => {
+      ctx.beginPath();
+      if (side === "left") {
+        ctx.moveTo(width, safe);
+        ctx.lineTo(safe, safe);
+        ctx.lineTo(safe, height - safe);
+        ctx.lineTo(width, height - safe);
+      } else {
+        ctx.moveTo(0, safe);
+        ctx.lineTo(width - safe, safe);
+        ctx.lineTo(width - safe, height - safe);
+        ctx.lineTo(0, height - safe);
+      }
+    };
+    strokeOpen(ctx, "#1d4ed8", true, px, safeLine);
+  }
+
+  if (side === "left") {
+    const fold = () => {
+      ctx.beginPath();
+      ctx.moveTo(width - px * 0.4, bleed);
+      ctx.lineTo(width - px * 0.4, height - bleed);
+    };
+    strokeOpen(ctx, "#e10600", true, px, fold);
+  }
+
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  texture.anisotropy = 8;
+  texture.needsUpdate = true;
+  return texture;
+}
+
 function PrintMaterial({
   url,
   side,
@@ -149,23 +231,42 @@ function Wing({
   outsideUrl,
   insideUrl,
   normalMap,
+  showSafe,
 }: {
   side: PanelSide;
   outsideUrl: string | null;
   insideUrl: string | null;
   normalMap: THREE.Texture | null;
+  showSafe: boolean;
 }) {
-  const x = side === "left" ? -PANEL_W / 2 : PANEL_W / 2;
+  const guide = useMemo(() => panelGuide(side, showSafe), [side, showSafe]);
+  useEffect(() => {
+    return () => guide?.dispose();
+  }, [guide]);
+
+  const x = side === "left" ? -HALF_W / 2 : HALF_W / 2;
   return (
     <group position={[x, 0, 0]}>
       <mesh position={[0, 0, SHEET / 2]} castShadow>
-        <planeGeometry args={[PANEL_W, PANEL_H]} />
+        <planeGeometry args={[HALF_W, SHEET_H]} />
         <PrintMaterial url={insideUrl} side={side} mirror={false} normalMap={normalMap} />
       </mesh>
+      {guide ? (
+        <mesh position={[0, 0, SHEET / 2 + 0.0014]}>
+          <planeGeometry args={[HALF_W, SHEET_H]} />
+          <meshBasicMaterial map={guide} transparent depthWrite={false} polygonOffset polygonOffsetFactor={-2} />
+        </mesh>
+      ) : null}
       <mesh position={[0, 0, -SHEET / 2]} rotation={[0, Math.PI, 0]} castShadow>
-        <planeGeometry args={[PANEL_W, PANEL_H]} />
+        <planeGeometry args={[HALF_W, SHEET_H]} />
         <PrintMaterial url={outsideUrl} side={side} mirror={false} normalMap={normalMap} />
       </mesh>
+      {guide ? (
+        <mesh position={[0, 0, -SHEET / 2 - 0.0014]} rotation={[0, Math.PI, 0]}>
+          <planeGeometry args={[HALF_W, SHEET_H]} />
+          <meshBasicMaterial map={guide} transparent depthWrite={false} polygonOffset polygonOffsetFactor={-2} />
+        </mesh>
+      ) : null}
     </group>
   );
 }
@@ -192,11 +293,13 @@ function Brochure({
   pose,
   outsideUrl,
   insideUrl,
+  showSafe,
 }: {
   fold: number;
   pose: Pose;
   outsideUrl: string | null;
   insideUrl: string | null;
+  showSafe: boolean;
 }) {
   const rig = useRef<THREE.Group>(null);
   const cover = useRef<THREE.Group>(null);
@@ -224,11 +327,11 @@ function Brochure({
   return (
     <group ref={rig}>
       <group ref={cover}>
-        <Wing side="left" outsideUrl={outsideUrl} insideUrl={insideUrl} normalMap={normalMap} />
+        <Wing side="left" outsideUrl={outsideUrl} insideUrl={insideUrl} normalMap={normalMap} showSafe={showSafe} />
       </group>
-      <Wing side="right" outsideUrl={outsideUrl} insideUrl={insideUrl} normalMap={normalMap} />
+      <Wing side="right" outsideUrl={outsideUrl} insideUrl={insideUrl} normalMap={normalMap} showSafe={showSafe} />
       <mesh position={[0, 0, SHEET / 2 + 0.003]}>
-        <planeGeometry args={[0.07, PANEL_H]} />
+        <planeGeometry args={[0.07, SHEET_H]} />
         <meshBasicMaterial map={crease ?? undefined} transparent depthWrite={false} />
       </mesh>
     </group>
@@ -296,7 +399,7 @@ function Lights({ mode }: { mode: LightMode }) {
   );
 }
 
-const TABLE_TOP = -PANEL_H / 2;
+const TABLE_TOP = -SHEET_H / 2;
 const STAND_POS = new THREE.Vector3(1.05, -0.05, 11.6);
 const STAND_TARGET = new THREE.Vector3(1.05, 0.02, 0);
 const TABLE_POS = new THREE.Vector3(1.7, TABLE_TOP + 9.8, 8.1);
@@ -382,12 +485,14 @@ export default function BrochureCanvas({
   pose,
   outsideUrl,
   insideUrl,
+  showSafe,
 }: {
   fold: number;
   mode: LightMode;
   pose: Pose;
   outsideUrl: string | null;
   insideUrl: string | null;
+  showSafe: boolean;
 }) {
   return (
     <Canvas
@@ -405,8 +510,9 @@ export default function BrochureCanvas({
         pose={pose}
         outsideUrl={outsideUrl}
         insideUrl={insideUrl}
+        showSafe={showSafe}
       />
-      <ScaleSet position={[PANEL_W + 0.16 + SCALE_HALF, TABLE_TOP, 0.02]} />
+      <ScaleSet position={[HALF_W + 0.16 + SCALE_HALF, TABLE_TOP, 0.02]} />
       <ViewPose pose={pose} />
       <OrbitControls makeDefault enableDamping dampingFactor={0.08} target={[1.05, 0.02, 0]} minDistance={1.6} maxDistance={16} />
     </Canvas>

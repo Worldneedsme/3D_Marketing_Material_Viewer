@@ -6,7 +6,8 @@ import { ArtworkUpload } from "@/components/ArtworkUpload";
 import type { LightMode, Pose } from "@/components/BrochureCanvas";
 import { FaceUpload } from "@/components/FaceUpload";
 import { LogoUpload } from "@/components/LogoUpload";
-import { createDemoSheet, createTentFace } from "@/lib/demoArt";
+import { createDemoSheet, createFlatFace, createTentFace } from "@/lib/demoArt";
+import { flatSheet, type FlatId } from "@/lib/print";
 
 const YARNS = [
   ["#e7a3b5", "Blush"],
@@ -34,11 +35,18 @@ const TentCanvas = dynamic(() => import("@/components/TentCanvas"), {
   ),
 });
 
+const FlatCanvas = dynamic(() => import("@/components/FlatCanvas"), {
+  ssr: false,
+  loading: () => (
+    <div className="flex h-full items-center justify-center text-sm text-stone-500">Trimming the sheet…</div>
+  ),
+});
+
 const COPY = {
   brochure: {
     kicker: "A4 single fold",
     title: "Brochure preview",
-    blurb: "Landscape sheet 297 × 210 mm, with 3 mm bleed. A credit card, a one-dollar bill, and an iPhone 17 stand beside it at real size.",
+    blurb: "Cut line 297 × 210 mm, folded at the center. The red line stays on the sheet. The blue line starts 5 mm inside it.",
   },
   coaster: {
     kicker: "Cup coaster",
@@ -50,11 +58,35 @@ const COPY = {
     title: "Table tent",
     blurb: "The same tent shape, sized to 10 cm wide and 17 cm tall. A credit card, a one-dollar bill, and an iPhone 17 stand beside it at real size.",
   },
+  label: {
+    kicker: "Coated stock",
+    title: "Horizontal label",
+    blurb: "Cut line 95 × 64.5 mm. The red line stays on the sheet. The blue line starts 5 mm inside it.",
+  },
+  magnet: {
+    kicker: "Custom cut",
+    title: "Magnet",
+    blurb: "Cut line 68 × 48 mm. The red line stays on the sheet. The blue line starts 5 mm inside it.",
+  },
+  card: {
+    kicker: "Card stock",
+    title: "Horizontal business card",
+    blurb: "Cut line 82 × 50 mm. The red line stays on the sheet. The blue line starts 5 mm inside it.",
+  },
+  notepad: {
+    kicker: "A5 glued pad",
+    title: "Lined notepad",
+    blurb: "Cut line 148 × 210 mm. The red line stays on the sheet. The blue line starts 5 mm inside it.",
+  },
 } as const;
 
 type Artwork = { url: string; name: string | null; owned: boolean };
-type Section = "brochure" | "coaster" | "tent";
-type Slot = "outside" | "inside" | "logo" | "front" | "back";
+type Section = "brochure" | "coaster" | "tent" | FlatId;
+type Slot = "outside" | "inside" | "logo" | "front" | "back" | FlatId;
+
+function isFlat(section: Section): section is FlatId {
+  return section === "label" || section === "magnet" || section === "card" || section === "notepad";
+}
 
 export function Studio() {
   const [section, setSection] = useState<Section>("brochure");
@@ -63,8 +95,13 @@ export function Studio() {
   const [logo, setLogo] = useState<Artwork | null>(null);
   const [front, setFront] = useState<Artwork | null>(null);
   const [back, setBack] = useState<Artwork | null>(null);
+  const [label, setLabel] = useState<Artwork | null>(null);
+  const [magnet, setMagnet] = useState<Artwork | null>(null);
+  const [card, setCard] = useState<Artwork | null>(null);
+  const [notepad, setNotepad] = useState<Artwork | null>(null);
+  const flats = { label, magnet, card, notepad };
+  const [safeZone, setSafeZone] = useState(true);
   const [yarn, setYarn] = useState("#e7a3b5");
-  const [guides, setGuides] = useState(true);
   const [mode, setMode] = useState<LightMode>("daylight");
   const [pose, setPose] = useState<Pose>("stand");
   const [fold, setFold] = useState(28);
@@ -75,6 +112,10 @@ export function Studio() {
     setInside((current) => current ?? { url: createDemoSheet("inside"), name: null, owned: false });
     setFront((current) => current ?? { url: createTentFace("front"), name: null, owned: false });
     setBack((current) => current ?? { url: createTentFace("back"), name: null, owned: false });
+    setLabel((current) => current ?? { url: createFlatFace("label"), name: null, owned: false });
+    setMagnet((current) => current ?? { url: createFlatFace("magnet"), name: null, owned: false });
+    setCard((current) => current ?? { url: createFlatFace("card"), name: null, owned: false });
+    setNotepad((current) => current ?? { url: createFlatFace("notepad"), name: null, owned: false });
   }, []);
 
   useEffect(() => {
@@ -93,7 +134,15 @@ export function Studio() {
             ? setLogo
             : which === "front"
               ? setFront
-              : setBack;
+              : which === "back"
+                ? setBack
+                : which === "label"
+                  ? setLabel
+                  : which === "magnet"
+                    ? setMagnet
+                    : which === "card"
+                      ? setCard
+                      : setNotepad;
     apply((current) => {
       if (current?.owned) URL.revokeObjectURL(current.url);
       return next;
@@ -126,6 +175,10 @@ export function Studio() {
               ["brochure", "Brochure"],
               ["coaster", "Coaster"],
               ["tent", "Tent"],
+              ["label", "Label"],
+              ["magnet", "Magnet"],
+              ["card", "Card"],
+              ["notepad", "Notepad"],
             ] as const
           ).map(([value, label]) => (
             <button
@@ -186,7 +239,7 @@ export function Studio() {
           hint="Back cover · front cover"
           imageUrl={outside?.url ?? null}
           fileName={outside?.name ?? null}
-          guides={guides}
+          showSafe={safeZone}
           labels={{ left: "Back cover", right: "Front cover" }}
           onFile={(file) => takeFile(file, "outside")}
         />
@@ -195,31 +248,27 @@ export function Studio() {
           hint="Page two · page three"
           imageUrl={inside?.url ?? null}
           fileName={inside?.name ?? null}
-          guides={guides}
+          showSafe={safeZone}
           labels={{ left: "Page two", right: "Page three" }}
           onFile={(file) => takeFile(file, "inside")}
         />
 
-        <div className="flex items-center justify-between gap-3">
-          <div>
-            <p className="text-sm font-medium">Print guides</p>
-            <p className="text-xs text-stone-500 dark:text-stone-400">Bleed, cut, safe zone, and fold</p>
-          </div>
-          <button
-            type="button"
-            role="switch"
-            aria-checked={guides}
-            onClick={() => setGuides((value) => !value)}
-            className={`relative h-7 w-12 rounded-full transition ${guides ? "bg-stone-900 dark:bg-amber-200" : "bg-stone-300 dark:bg-stone-700"}`}
-          >
-            <span
-              className={`absolute top-0.5 left-0.5 h-6 w-6 rounded-full bg-white transition dark:bg-stone-950 ${guides ? "translate-x-5" : ""}`}
-            />
-          </button>
-        </div>
+        <button
+          type="button"
+          onClick={() => setSafeZone((value) => !value)}
+          className={`rounded-xl border px-3 py-2 text-sm ${
+            safeZone
+              ? "border-stone-900 bg-stone-900 text-stone-50 dark:border-amber-200 dark:bg-amber-200 dark:text-stone-950"
+              : "border-black/10 dark:border-white/10"
+          }`}
+        >
+          {safeZone ? "Hide safe zone" : "Show safe zone"}
+        </button>
+        <p className="text-xs leading-5 text-stone-500 dark:text-stone-400">
+          The blue line starts 5 mm inside the red cut line.
+        </p>
 
-        {guides ? (
-          <ul className="grid gap-1.5 text-xs text-stone-600 dark:text-stone-300">
+        <ul className="grid gap-1.5 text-xs text-stone-600 dark:text-stone-300">
             <li className="flex items-center gap-2">
               <span className="h-2.5 w-2.5 rounded-sm bg-black" />
               Black — end of the bleed. Artwork must reach this frame.
@@ -237,7 +286,6 @@ export function Studio() {
               Fold — vertical center, 148.5 mm.
             </li>
           </ul>
-        ) : null}
 
         <div>
           <p className="mb-2 text-sm font-medium">Placement</p>
@@ -369,6 +417,57 @@ export function Studio() {
           </>
         ) : null}
 
+        {isFlat(section) ? (
+          <>
+            <FaceUpload
+              title="Artwork"
+              hint="Full sheet, including the bleed"
+              imageUrl={flats[section]?.url ?? null}
+              fileName={flats[section]?.name ?? null}
+              aspect={`${flatSheet(section).fullW} / ${flatSheet(section).fullH}`}
+              onFile={(file) => takeFile(file, section)}
+            />
+            <button
+              type="button"
+              onClick={() => setSafeZone((value) => !value)}
+              className={`rounded-xl border px-3 py-2 text-sm ${
+                safeZone
+                  ? "border-stone-900 bg-stone-900 text-stone-50 dark:border-amber-200 dark:bg-amber-200 dark:text-stone-950"
+                  : "border-black/10 dark:border-white/10"
+              }`}
+            >
+              {safeZone ? "Hide safe zone" : "Show safe zone"}
+            </button>
+            <p className="text-xs leading-5 text-stone-500 dark:text-stone-400">
+              The blue line starts 5 mm inside the red cut line.
+            </p>
+            <div>
+              <p className="mb-2 text-sm font-medium">Lighting</p>
+              <div className="grid grid-cols-2 gap-2">
+                {(
+                  [
+                    ["daylight", "Daylight"],
+                    ["cinematic", "Cinematic"],
+                  ] as const
+                ).map(([value, label]) => (
+                  <button
+                    key={value}
+                    type="button"
+                    onClick={() => setMode(value)}
+                    className={`rounded-xl border px-3 py-2 text-sm ${
+                      mode === value
+                        ? "border-stone-900 bg-stone-900 text-stone-50 dark:border-amber-200 dark:bg-amber-200 dark:text-stone-950"
+                        : "border-black/10 dark:border-white/10"
+                    }`}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </>
+        ) : null}
+
         {section === "coaster" ? (
           <div>
             <p className="mb-2 text-sm font-medium">Lighting</p>
@@ -405,9 +504,17 @@ export function Studio() {
           pose={pose}
           outsideUrl={outside?.url ?? null}
           insideUrl={inside?.url ?? null}
+          showSafe={safeZone}
         />
         ) : section === "coaster" ? (
           <CoasterCanvas mode={mode} yarn={yarn} logoUrl={logo?.url ?? null} />
+        ) : isFlat(section) ? (
+          <FlatCanvas
+            mode={mode}
+            productId={section}
+            artUrl={flats[section]?.url ?? null}
+            showSafe={safeZone}
+          />
         ) : (
           <TentCanvas mode={mode} frontUrl={front?.url ?? null} backUrl={back?.url ?? null} />
         )}
