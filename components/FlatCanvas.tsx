@@ -265,7 +265,7 @@ export default function FlatCanvas({
   const fullW = (product.cutW + product.bleed * 2) * MM;
   const scaleX = PIECE_X + fullW / 2 + 0.14 + SCALE_HALF;
   const tall = product.cutH > 100;
-  const look = tall ? ([1.45, 1.05, 0] as const) : ([1.25, 0.45, 0] as const);
+  const look: [number, number, number] = tall ? [1.45, 1.05, 0] : [1.25, 0.45, 0];
 
   return (
     <Canvas
@@ -274,7 +274,7 @@ export default function FlatCanvas({
       dpr={[1, 2]}
       camera={{ position: tall ? [1.6, 3.15, 11.6] : [1.45, 2.75, 9.6], fov: 32, near: 0.02, far: 60 }}
       gl={{ antialias: true }}
-      onCreated={({ camera }) => camera.lookAt(...look)}
+      onCreated={({ camera }) => camera.lookAt(look[0], look[1], look[2])}
     >
       <Rig mode={mode} />
       <Lights mode={mode} />
