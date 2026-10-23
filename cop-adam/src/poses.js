@@ -34,6 +34,26 @@ export function pose(p = {}) {
 
 export const STAND = pose();
 
+// Blend two raw poses.
+export function mixPose(a, b, k) {
+  const out = {};
+  for (const key in a) out[key] = a[key] + ((b[key] ?? a[key]) - a[key]) * k;
+  return out;
+}
+
+// Pose at time t from keys [[time, rawPose], ...], eased between keys.
+export function keyed(keys, t, ease = (u) => u * u * (3 - 2 * u)) {
+  if (t <= keys[0][0]) return keys[0][1];
+  for (let i = 1; i < keys.length; i++) {
+    const [t1, b] = keys[i];
+    if (t <= t1) {
+      const [t0, a] = keys[i - 1];
+      return mixPose(a, b, ease((t - t0) / (t1 - t0)));
+    }
+  }
+  return keys[keys.length - 1][1];
+}
+
 // Distance covered by one full walk cycle (two steps) at a given leg swing.
 export const strideOf = (amp) => 4 * (DIM.thigh + DIM.shin) * Math.sin(amp) * 0.92;
 

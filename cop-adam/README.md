@@ -10,6 +10,7 @@ Fikir listesi ve sahne akışları: [FIKIRLER.md](FIKIRLER.md)
 |---|---|---|
 | `atlama` | KAFASINDA KURAN ↔ YAPAN | 16,5 sn |
 | `kazi` | PES EDEN ↔ DEVAM EDEN | 15 sn |
+| `birikim` | HARCAYAN ↔ BİRİKTİREN | 15,5 sn |
 
 ## Kurulum
 
@@ -28,6 +29,7 @@ node render.mjs atlama                       # -> out/atlama.mp4
 node render.mjs kazi --watermark @hesabin    # ortada soluk filigran
 node render.mjs atlama --sessiz              # ses efektleri olmadan
 node render.mjs atlama --stills 0,3.2,8      # sadece o saniyelerden PNG kareler
+node render.mjs atlama --ses                 # videoyu tekrar render etmeden sadece sesi yeniden karıştırır
 ```
 
 Bir sahne yaklaşık 7–8 dakikada render olur.

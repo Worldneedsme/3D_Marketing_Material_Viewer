@@ -4,7 +4,7 @@
 // wrong, and ends up sitting on the board.
 import { StickFigure, STAND_HIP, DIM } from '../rig.js';
 import { Track } from '../timeline.js';
-import { pose, DIVE, TUCK, CROUCH } from '../poses.js';
+import { pose, mixPose, DIVE, TUCK, CROUCH } from '../poses.js';
 import { stand, walkTo, runTo, fly, breathe, tremble } from '../moves.js';
 import { makeTower, makeBoard } from '../props.js';
 import { PI, lerp, smooth, smoothstep, easeInOut, easeOut, clamp } from '../math.js';
@@ -163,7 +163,7 @@ export default function build(world) {
         pitch: (lt) => 2 * PI * 1.48 * smooth(clamp(lt / 1.4)) ** 0.9,
         poseAt: (lt) => {
           const k = smoothstep(0.05, 0.3, lt) * (1 - smoothstep(0.95, 1.2, lt));
-          return mix(DIVE, TUCK, k);
+          return mixPose(DIVE, TUCK, k);
         },
       }),
     },
@@ -373,11 +373,4 @@ export default function build(world) {
 
   const markers = Object.fromEntries([...rTrack.clips.map((c) => ['R.' + c.name, +c.t0.toFixed(2)]), ...lTrack.clips.map((c) => ['L.' + c.name, +c.t0.toFixed(2)]), ['splash1', +e1.t.toFixed(2)], ['splash2', +e2.t.toFixed(2)]]);
   return { duration: 16.5, sfx, markers };
-}
-
-// Blend two raw poses.
-function mix(a, b, k) {
-  const out = {};
-  for (const key in a) out[key] = lerp(a[key], b[key] ?? a[key], k);
-  return out;
 }

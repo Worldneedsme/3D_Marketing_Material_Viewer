@@ -6,11 +6,12 @@ const mode = params.get('mode') || 'preview';
 const fps = Number(params.get('fps') || 30);
 
 const stage = document.getElementById('stage');
+// Scenes may paint text into textures while building, so fonts come first.
+await document.fonts.load('700 46px Pixel');
 const world = new World(document.getElementById('c'), stage);
 const { default: build } = await import(`./scenes/${sceneName}.js`);
 const scene = build(world, params);
 world.setWatermark(params.get('watermark') || '');
-await document.fonts.load('700 46px Pixel');
 
 const nextFrame = () => new Promise((r) => requestAnimationFrame(() => r()));
 

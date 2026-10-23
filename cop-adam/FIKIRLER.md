@@ -7,9 +7,9 @@ Format: 1080×1920 dikey, 12–17 sn, siyah arka plan, piksel font etiketler, so
 | # | Sol (haksız) | Sağ (haklı) | Sahne | Son yazı |
 |---|---|---|---|---|
 | 1 ✅ | KAFASINDA KURAN | YAPAN | Atlama kulesi | Ne kadar beklersen, su o kadar soğuk görünür. |
-| 2 | PES EDEN | DEVAM EDEN | Yer altına tünel kazıyorlar | Sabreden derviş muradına ermiş. |
+| 2 ✅ | PES EDEN | DEVAM EDEN | Yer altına tünel kazıyorlar | Sabreden derviş muradına ermiş. |
 | 3 | BAHANE BULAN | YOL BULAN | Önlerinde yüksek bir duvar | İsteyen yolunu bulur, istemeyen bahanesini. |
-| 4 | HARCAYAN | BİRİKTİREN | Gökten bozuk para yağıyor | Damlaya damlaya göl olur. |
+| 4 ✅ | HARCAYAN | BİRİKTİREN | Gökten altın para yağıyor | Damlaya damlaya göl olur. |
 | 5 | "PAZARTESİ BAŞLARIM" | BUGÜN BAŞLAYAN | Spor salonu, takvim | Pazartesi bir gün değil, bir bahane. |
 | 6 | BİLGİ BİRİKTİREN | UYGULAYAN | Kitap yığını ve uçurum | Bildiğin değil, yaptığın seni yukarı taşır. |
 | 7 | "VAKTİM YOK" DİYEN | BALTASINI BİLEYEN | Ağaç kesme | Baltanı bilemeye vakit ayır. |
@@ -29,7 +29,7 @@ Format: 1080×1920 dikey, 12–17 sn, siyah arka plan, piksel font etiketler, so
 Yapan koşup hemen atlıyor, merdivenden geri çıkıp bir de takla atıyor. Kafasında kuran kenara gelip aşağı bakıyor, geri çekiliyor, düşünüyor, "bir... iki..." deyip yine atlayamıyor. Sonunda tahtanın ucuna oturup kalıyor.
 Düşünceler: *ya su soğuksa? · ya derinse? · ya herkes bakıyorsa? · ya beceremezsem? · yarın atlarım.*
 
-**2. PES EDEN ↔ DEVAM EDEN**
+**2. PES EDEN ↔ DEVAM EDEN** (hazır: `node render.mjs kazi`)
 Kesit görünüm: toprak katmanları, ikisinin de altında aynı derinlikte parlayan bir elmas. İkisi de kazmayla aşağı kazıyor. Pes eden elmasa bir karış kala kazmayı atıp tünelden geri tırmanıyor. Devam eden iki kazma daha vuruyor, elmas ışık saçıyor.
 Düşünceler: *bu iş olmuyor · boşuna uğraşıyorum · herkes çoktan bıraktı.*
 
@@ -37,9 +37,9 @@ Düşünceler: *bu iş olmuyor · boşuna uğraşıyorum · herkes çoktan bıra
 İkisinin önünde de aynı yükseklikte bir duvar. Bahane bulan duvara sırtını dayayıp oturuyor. Yol bulan etraftaki taşları tek tek taşıyıp basamak yapıyor, duvarı aşıp öbür tarafta güneşe doğru yürüyor.
 Düşünceler: *çok yüksek · ekipmanım yok · şansım yok.*
 
-**4. HARCAYAN ↔ BİRİKTİREN**
-Her ikisine de aynı aralıklarla bozuk para düşüyor. Harcayan her parayı hemen yandaki tezgaha atıyor, eline bir şey geçmiyor. Biriktiren paraları bir kartopuna yapıştırıyor; kartopu yokuşta yuvarlandıkça devleşiyor.
-Düşünceler: *bir kahveden ne olur · ay sonu bakarız.*
+**4. HARCAYAN ↔ BİRİKTİREN** (hazır: `node render.mjs birikim`)
+İkisine de her maaş gününde aynı altın para düşüyor. Harcayan parayı "İNDİRİM" tezgâhına atıp kahve, poşet, kutu alıyor ve arkasına fırlatıyor; eşyalar yığılıp grileşiyor, sayacı hep 0 TL. Biriktiren her parayı ayağının altına koyup yükseliyor; bir süre sonra paralar faizle kendiliğinden eklenmeye başlıyor ve yükseliş hızlanıyor. Sonunda tepede oturuyor, harcayan aşağıdan omuz silkiyor.
+Düşünceler: *bir kahveden ne olur · indirim kaçmaz! · ay sonu bakarız · bu ay da yetmedi... · maaş nereye gitti?*
 
 **5. "PAZARTESİ BAŞLARIM" ↔ BUGÜN BAŞLAYAN**
 Arka planda takvim yaprakları uçuşuyor: PZT, PZT, PZT. Biri koltukta oturup her pazartesi "haftaya" diyor. Öbürü her gün küçük bir dambılla çalışıyor ve kolları her sahnede biraz kalınlaşıyor (çöp adam kaslanıyor).

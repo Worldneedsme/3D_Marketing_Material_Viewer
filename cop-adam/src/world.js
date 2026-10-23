@@ -15,6 +15,7 @@ const WaterShader = {
     tDiffuse: { value: null },
     textureMatrix: { value: null },
     time: { value: 0 },
+    swell: { value: 1 },
     ripples: { value: Array.from({ length: MAX_RIPPLES }, () => new THREE.Vector4(0, 0, -100, 0)) },
   },
   vertexShader: /* glsl */ `
@@ -33,6 +34,7 @@ const WaterShader = {
     uniform vec3 color;
     uniform sampler2D tDiffuse;
     uniform float time;
+    uniform float swell;
     uniform vec4 ripples[${MAX_RIPPLES}];
     varying vec4 vUv;
     varying vec3 vWorld;
@@ -43,8 +45,8 @@ const WaterShader = {
       // Slow swell: rows of waves running towards the camera.
       float w = sin(vWorld.z * 7.0 + time * 1.6 + sin(vWorld.x * 1.1 + time * 0.3) * 1.4);
       w += 0.55 * sin(vWorld.z * 17.0 - time * 2.1 + vWorld.x * 0.8);
-      off.x += w * 0.008;
-      off.y += sin(vWorld.x * 2.3 + vWorld.z * 3.0 + time * 0.9) * 0.003;
+      off.x += w * 0.008 * swell;
+      off.y += sin(vWorld.x * 2.3 + vWorld.z * 3.0 + time * 0.9) * 0.003 * swell;
       float foam = 0.0;
       for (int i = 0; i < ${MAX_RIPPLES}; i++) {
         vec4 r = ripples[i];
@@ -139,7 +141,8 @@ export class World {
 
   // ---- water -------------------------------------------------------------
 
-  makeWater({ y = 0, tint = 0.5 } = {}) {
+  // `swell` scales the idle waves; a small value gives a wet, polished floor.
+  makeWater({ y = 0, tint = 0.5, swell = 1 } = {}) {
     const water = new Reflector(new THREE.PlaneGeometry(90, 90), {
       textureWidth: WIDTH / 2,
       textureHeight: HEIGHT / 2,
@@ -148,6 +151,7 @@ export class World {
       shader: WaterShader,
     });
     water.material.uniforms.ripples.value = WaterShader.uniforms.ripples.value.map((v) => v.clone());
+    water.material.uniforms.swell.value = swell;
     water.rotation.x = -Math.PI / 2;
     water.position.set(0, y, -20);
     this.scene.add(water);

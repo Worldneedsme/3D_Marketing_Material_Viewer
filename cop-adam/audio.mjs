@@ -26,6 +26,24 @@ const RECIPES = {
     { src: 'sine=frequency=2349:duration=1.8', fx: 'afade=t=out:st=0:d=1.7:curve=exp', gain: 0.22 },
     { src: 'sine=frequency=3136:duration=1.4', fx: 'adelay=60|60,afade=t=out:st=0:d=1.3:curve=exp', gain: 0.15 },
   ],
+  // Coin landing in a hand.
+  coin: () => [
+    { src: 'sine=frequency=2637:duration=0.4', fx: 'afade=t=out:st=0:d=0.38:curve=exp', gain: 0.45 },
+    { src: 'sine=frequency=3951:duration=0.3', fx: 'afade=t=out:st=0:d=0.25:curve=exp', gain: 0.25 },
+  ],
+  // Coin dropped on the stack.
+  clink: () => [
+    { src: 'sine=frequency=1760:duration=0.25', fx: 'afade=t=out:st=0:d=0.22:curve=exp', gain: 0.45 },
+  ],
+  // Interest coin appearing: tiny bright tick.
+  tick: () => [
+    { src: 'sine=frequency=3136:duration=0.1', fx: 'afade=t=out:st=0:d=0.09:curve=exp', gain: 0.18 },
+  ],
+  // Till ringing up a sale.
+  register: (seed) => [
+    { src: `anoisesrc=color=white:amplitude=0.6:seed=${seed}:duration=0.06`, fx: 'highpass=f=1500,afade=t=out:st=0:d=0.05:curve=exp', gain: 0.35 },
+    { src: 'sine=frequency=2093:duration=0.5', fx: 'adelay=50|50,afade=t=out:st=0:d=0.5:curve=exp', gain: 0.35 },
+  ],
   // Soft footstep on a plank.
   step: (seed) => [
     { src: `anoisesrc=color=brown:amplitude=0.5:seed=${seed}:duration=0.12`, fx: 'lowpass=f=900,afade=t=out:st=0:d=0.1:curve=exp', gain: 0.18 },

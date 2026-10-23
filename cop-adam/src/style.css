@@ -47,6 +47,18 @@ html, body {
   text-shadow: 0 0 18px rgba(255, 255, 255, 0.18);
 }
 
+.counter {
+  font-size: 34px;
+  letter-spacing: 0.06em;
+  color: #b4b4b4;
+  text-shadow: none;
+}
+
+.counter.gold {
+  color: #f3c95c;
+  text-shadow: 0 0 16px rgba(243, 201, 92, 0.35);
+}
+
 .thought {
   font-size: 38px;
   letter-spacing: 0.06em;
