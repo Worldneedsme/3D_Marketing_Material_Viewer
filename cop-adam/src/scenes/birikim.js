@@ -331,10 +331,10 @@ export default function build(world) {
   }
 
   // ---- text ------------------------------------------------------------------------------
-  world.addLabel('HARCAYAN', [-1.75, 7.55, 0]);
-  world.addLabel('BİRİKTİREN', [1.75, 7.25, 0]);
-  const hCount = world.addLabel('0 TL', [-1.75, 7.1, 0], { cls: 'label counter' });
-  const bCount = world.addLabel('0 TL', [1.75, 6.8, 0], { cls: 'label counter gold' });
+  world.addLabel('HARCAYAN', [-1.75, 7.2, 0]);
+  world.addLabel('BİRİKTİREN', [1.75, 7.2, 0]);
+  const hCount = world.addLabel('0 TL', [-1.75, 6.75, 0], { cls: 'label counter' });
+  const bCount = world.addLabel('0 TL', [1.75, 6.75, 0], { cls: 'label counter gold' });
   world.addThought('bir kahveden ne olur', H, 1.25, 2.6);
   world.addThought('indirim kaçmaz!', H, 3.45, 4.8);
   world.addThought('ay sonu bakarız', H, 5.65, 7.0);

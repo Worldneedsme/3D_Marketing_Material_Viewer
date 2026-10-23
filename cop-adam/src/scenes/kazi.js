@@ -84,6 +84,21 @@ export default function build(world) {
     scene.add(m);
   }
 
+  // Many smaller diamonds buried in the ground: the deeper, the more of them.
+  const gemRand = mulberry32(21);
+  const buried = [];
+  for (let tries = 0; buried.length < 58 && tries < 6000; tries++) {
+    const x = -3.55 + gemRand() * 7.1;
+    const y = -3.45 + gemRand() * 6.8;
+    const depth = clamp((3.35 - y) / 6.8);
+    if (gemRand() > depth * depth) continue;
+    const dug = shafts.some((sh) => x > sh.x0 - 0.15 && x < sh.x1 + 0.15 && y > 0.12);
+    const nearMain = shafts.some((sh) => Math.hypot(x - sh.strikeX, y - DIAMOND_Y) < 0.42);
+    const crowded = buried.some((g) => Math.hypot(x - g.x, y - g.y) < 0.3);
+    if (dug || nearMain || crowded) continue;
+    buried.push({ x, y, r: 0.05 + gemRand() * 0.06 * (0.6 + depth), tilt: (gemRand() - 0.5) * 0.9, phase: gemRand() * PI * 2, speed: 1.2 + gemRand() * 2.2, tint: Math.floor(gemRand() * 3) });
+  }
+
   // Pebbles on the cut face, kept clear of anything that gets dug.
   const rand = mulberry32(5);
   const pebbleGeo = new THREE.SphereGeometry(1, 8, 6);
@@ -93,7 +108,8 @@ export default function build(world) {
     const y = -3.6 + rand() * 8.4;
     const inShaft = shafts.some((sh) => x > sh.x0 - 0.06 && x < sh.x1 + 0.06 && y > 0.1);
     const nearGem = shafts.some((sh) => Math.hypot(x - sh.strikeX, y - DIAMOND_Y) < 0.5);
-    if (inShaft || nearGem) continue;
+    const nearBuried = buried.some((g) => Math.hypot(x - g.x, y - g.y) < g.r + 0.12);
+    if (inShaft || nearGem || nearBuried) continue;
     const p = new THREE.Mesh(pebbleGeo, pebbleMats[i % 3]);
     const r = 0.03 + rand() * 0.07;
     p.scale.set(r * (1 + rand()), r, r * 0.5);
@@ -132,6 +148,21 @@ export default function build(world) {
   };
   const gemL = makeGem(shafts[0].strikeX);
   const gemR = makeGem(shafts[1].strikeX);
+
+  const smallGem = new THREE.OctahedronGeometry(1, 0);
+  const smallMats = [0xaeeeff, 0xe6fbff, 0x8fd3ff].map((c) => new THREE.MeshStandardMaterial({ color: c, emissive: 0x2a9fd6, emissiveIntensity: 0.45, roughness: 0.08, metalness: 0.2, flatShading: true }));
+  const smallGlow = new THREE.SpriteMaterial({ map: glowTex, blending: THREE.AdditiveBlending, depthWrite: false, transparent: true, opacity: 0.8 });
+  const twinkles = buried.map((b) => {
+    const m = new THREE.Mesh(smallGem, smallMats[b.tint]);
+    m.scale.set(b.r, b.r * 1.28, b.r);
+    m.rotation.z = b.tilt;
+    m.position.set(b.x, b.y, DEPTH / 2);
+    scene.add(m);
+    const glow = new THREE.Sprite(smallGlow);
+    glow.position.set(b.x, b.y, DEPTH / 2 + 0.05);
+    scene.add(glow);
+    return { ...b, glow };
+  });
 
   // ---- pickaxes -------------------------------------------------------------------
   const woodMat = new THREE.MeshStandardMaterial({ color: 0xcbbba4, roughness: 0.7 });
@@ -394,8 +425,8 @@ export default function build(world) {
   world.addBurst('sparks', { t0: found, parts: burst(sd.strikeX, dFloor - 0.05, found, 999, 60).map((p) => ({ ...p, r: p.r * 0.5, vy: p.vy * 1.4 })), life: 0.9, gravity: 4 });
 
   // ---- text --------------------------------------------------------------------------
-  world.addLabel('PES EDEN', [-1.75, 7.05, 0]);
-  world.addLabel('DEVAM EDEN', [1.75, 6.7, 0]);
+  world.addLabel('PES EDEN', [-1.75, 7.0, 0]);
+  world.addLabel('DEVAM EDEN', [1.75, 7.0, 0]);
   world.addThought('bu iş olmuyor', Q, 2.2, 3.4);
   world.addThought('boşuna uğraşıyorum', Q, 3.4, 4.7);
   world.addThought('bıraksam artık...', Q, 4.75, qTrack.at('climb'));
@@ -437,6 +468,9 @@ export default function build(world) {
     const miss = smoothstep(qTrack.at('gone') - 0.5, qTrack.at('gone') + 0.5, t);
     gemL.glow.scale.setScalar(0.9 + miss * 0.5 * (0.5 + 0.5 * Math.sin(t * 3.2)));
     gemL.light.intensity = miss * 1.5 * (0.6 + 0.4 * Math.sin(t * 3.2));
+
+    // Buried gems glint now and then.
+    for (const g of twinkles) g.glow.scale.setScalar(g.r * (3.2 + 4 * Math.max(0, Math.sin(t * g.speed + g.phase)) ** 6));
   });
 
   const markers = Object.fromEntries([...qTrack.clips.map((c) => ['Q.' + c.name, +c.t0.toFixed(2)]), ...dTrack.clips.map((c) => ['D.' + c.name, +c.t0.toFixed(2)]), ['found', +found.toFixed(2)]]);

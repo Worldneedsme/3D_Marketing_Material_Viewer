@@ -354,8 +354,8 @@ export default function build(world) {
   }
 
   // ----------------------------------------------------------------- text --
-  world.addLabel('KAFASINDA KURAN', [-1.75, 7.05, 0]);
-  world.addLabel('YAPAN', [1.75, 6.7, 0]);
+  world.addLabel('KAFASINDA KURAN', [-1.75, 7.0, 0]);
+  world.addLabel('YAPAN', [1.75, 7.0, 0]);
   world.addThought('ya su soğuksa?', L, lTrack.at('peek') + 0.2, e1.t - 0.05);
   world.addThought('ya derinse?', L, lTrack.at('think') + 0.1, lTrack.at('think') + 0.95);
   world.addThought('ya herkes bakıyorsa?', L, lTrack.at('think') + 0.95, lTrack.at('walk2') + 0.3);

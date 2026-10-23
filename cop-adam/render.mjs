@@ -4,6 +4,7 @@
 //   node render.mjs atlama --stills 0,2.5,6     -> out/atlama-2.5.png ...
 //   node render.mjs atlama --watermark @hesabin --sessiz
 //   node render.mjs atlama --ses                -> re-mix sound onto out/atlama.mp4
+//   node render.mjs profil --size 1080x1080 --stills 0
 import { chromium } from 'playwright';
 import { spawn } from 'node:child_process';
 import fs from 'node:fs';
@@ -22,6 +23,7 @@ const flag = (name, def) => {
 };
 const scene = args.find((a, i) => !a.startsWith('--') && !(args[i - 1] || '').startsWith('--')) || 'atlama';
 const fps = Number(flag('fps', 30));
+const [width, height] = String(flag('size', '1080x1920')).split('x').map(Number);
 const outDir = path.join(root, 'out');
 fs.mkdirSync(outDir, { recursive: true });
 
@@ -31,13 +33,13 @@ const browser = await chromium.launch({
   executablePath: process.env.CHROMIUM_PATH || undefined,
   args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'],
 });
-const page = await browser.newPage({ viewport: { width: 1080, height: 1920 }, deviceScaleFactor: 1 });
+const page = await browser.newPage({ viewport: { width, height }, deviceScaleFactor: 1 });
 page.on('console', (m) => {
   if (m.type() === 'error' || m.type() === 'warning') console.log(`[page] ${m.text()}`);
 });
 page.on('pageerror', (e) => console.log(`[page error] ${e.message}`));
 
-const query = new URLSearchParams({ scene, mode: 'render', fps: String(fps) });
+const query = new URLSearchParams({ scene, mode: 'render', fps: String(fps), w: String(width), h: String(height) });
 const watermark = flag('watermark', '');
 if (watermark) query.set('watermark', watermark);
 await page.goto(`http://127.0.0.1:${port}/index.html?${query}`);

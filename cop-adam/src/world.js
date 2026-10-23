@@ -71,11 +71,13 @@ const WaterShader = {
 
 // Scene, lights, water, splashes and the 2D text overlay. Scenes build on top.
 export class World {
-  constructor(canvas, stage) {
+  constructor(canvas, stage, { width = WIDTH, height = HEIGHT } = {}) {
     this.stage = stage;
+    this.width = width;
+    this.height = height;
     const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: true });
     renderer.setPixelRatio(1);
-    renderer.setSize(WIDTH, HEIGHT, false);
+    renderer.setSize(width, height, false);
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.05;
     renderer.shadowMap.enabled = true;
@@ -90,7 +92,7 @@ export class World {
     scene.environmentIntensity = 0.28;
     this.scene = scene;
 
-    this.camera = new THREE.PerspectiveCamera(35, WIDTH / HEIGHT, 0.1, 200);
+    this.camera = new THREE.PerspectiveCamera(35, width / height, 0.1, 200);
 
     scene.add(new THREE.HemisphereLight(0x9aa3b5, 0x050505, 0.35));
     const key = new THREE.DirectionalLight(0xfff4e8, 2.6);
@@ -144,8 +146,8 @@ export class World {
   // `swell` scales the idle waves; a small value gives a wet, polished floor.
   makeWater({ y = 0, tint = 0.5, swell = 1 } = {}) {
     const water = new Reflector(new THREE.PlaneGeometry(90, 90), {
-      textureWidth: WIDTH / 2,
-      textureHeight: HEIGHT / 2,
+      textureWidth: this.width / 2,
+      textureHeight: this.height / 2,
       clipBias: 0.003,
       color: new THREE.Color(tint, tint, tint * 1.04),
       shader: WaterShader,
@@ -304,7 +306,7 @@ export class World {
 
   project(p) {
     const v = (p instanceof THREE.Vector3 ? p.clone() : new THREE.Vector3(...p)).project(this.camera);
-    return [((v.x + 1) / 2) * WIDTH, ((1 - v.y) / 2) * HEIGHT];
+    return [((v.x + 1) / 2) * this.width, ((1 - v.y) / 2) * this.height];
   }
 
   updateOverlay(t) {

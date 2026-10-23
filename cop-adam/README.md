@@ -4,6 +4,8 @@ Siyah zeminli 3D çöp adam videoları üretir. İki fikri iki çöp adamla kar�
 
 Fikir listesi ve sahne akışları: [FIKIRLER.md](FIKIRLER.md)
 
+Instagram sayfası (isim, profil resmi, biyografi, açıklamalar, kapaklar): [instagram/INSTAGRAM.md](instagram/INSTAGRAM.md)
+
 ## Hazır sahneler
 
 | Sahne | Etiketler | Süre |
@@ -30,6 +32,7 @@ node render.mjs kazi --watermark @hesabin    # ortada soluk filigran
 node render.mjs atlama --sessiz              # ses efektleri olmadan
 node render.mjs atlama --stills 0,3.2,8      # sadece o saniyelerden PNG kareler
 node render.mjs atlama --ses                 # videoyu tekrar render etmeden sadece sesi yeniden karıştırır
+node render.mjs profil --size 1080x1080 --stills 0   # profil resmi (kare)
 ```
 
 Bir sahne yaklaşık 7–8 dakikada render olur.
