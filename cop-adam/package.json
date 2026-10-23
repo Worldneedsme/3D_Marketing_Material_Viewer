@@ -1,0 +1,15 @@
+{
+  "name": "cop-adam-video",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "render": "node render.mjs",
+    "preview": "node serve.mjs"
+  },
+  "dependencies": {
+    "three": "^0.186.1"
+  },
+  "devDependencies": {
+    "playwright": "1.63.0"
+  }
+}
