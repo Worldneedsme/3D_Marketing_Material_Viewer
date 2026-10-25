@@ -80,6 +80,22 @@ const RECIPES = {
     { src: `anoisesrc=color=brown:amplitude=1:seed=${seed}:duration=1.2`, fx: 'lowpass=f=600,afade=t=out:st=0.05:d=1.1:curve=exp', gain: 0.9 },
     { src: 'sine=frequency=55:duration=0.6', fx: 'afade=t=out:st=0:d=0.55:curve=exp', gain: 0.7 },
   ],
+  // Short bugle call (an original phrase on the bugle's natural notes).
+  bugle: () =>
+    [
+      [392, 0, 0.16],
+      [523, 0.18, 0.16],
+      [659, 0.36, 0.16],
+      [784, 0.54, 0.42],
+      [659, 1.0, 0.14],
+      [784, 1.16, 0.5],
+    ].flatMap(([f, at, len]) => {
+      const ms = Math.round(at * 1000);
+      return [
+        { src: `sine=frequency=${f}:duration=${len + 0.08}`, fx: `afade=t=in:d=0.02,afade=t=out:st=${len - 0.04}:d=0.12,adelay=${ms}|${ms}`, gain: 0.55 },
+        { src: `sine=frequency=${f * 2}:duration=${len + 0.08}`, fx: `afade=t=in:d=0.02,afade=t=out:st=${len - 0.04}:d=0.12,adelay=${ms}|${ms}`, gain: 0.2 },
+      ];
+    }),
   // Soft footstep on a plank.
   step: (seed) => [
     { src: `anoisesrc=color=brown:amplitude=0.5:seed=${seed}:duration=0.12`, fx: 'lowpass=f=900,afade=t=out:st=0:d=0.1:curve=exp', gain: 0.18 },

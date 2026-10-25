@@ -117,10 +117,29 @@ Biri durmadan vurdu, ağacı çizik bile almadı.
 
 Sabit yorum: `1️⃣ Vaktim yok diyen  2️⃣ Baltasını bileyen — senin baltan ne? (kitap, kurs, uyku...)`
 
+### 7. ŞAFAK SAYAN ↔ ŞAFAĞI DEĞERLENDİREN (`safak.mp4`, kapak: `kapak-safak.png`)
+
+```
+Askerlik vatan borcudur. Değerlendirmek kendine borcun. 🇹🇷
+
+Aynı koğuş, aynı bayrak, aynı şafak.
+Biri günleri duvara çizdi.
+Öbürü her sabah bayrağa selam durdu, okudu, çalıştı, ehliyetini aldı.
+Tezkere ikisine de geldi; biri eli boş döndü.
+
+ŞAFAK SAYAN mı, ŞAFAĞI DEĞERLENDİREN mi? 👇
+
+#askerlik #şafak #tezkere #vatan #türkbayrağı #mehmetçik #kişiselgelişim #motivasyon #hayatdersleri #çöpadam #keşfet #reels
+```
+
+Sabit yorum: `1️⃣ Şafak sayan  2️⃣ Şafağı değerlendiren — askerde ne kazandın? Yaz bakalım 🇹🇷`
+
+> Askeri hesapları ve 30 Ağustos, 29 Ekim gibi milli günleri yakalarsan bu video en çok o günlerde yayılır. 29 Ekim'e denk getir.
+
 ## Paylaşım planı
 
 - **Saat:** Türkiye'de akşam 20:00–22:00 arası.
-- **Sıra:** Gün 1 atlama, gün 2 kazı, gün 3 birikim, gün 4 veresiye, gün 5 duvar, gün 6 balta. Sonrasında haftada 3–4 video ([FIKIRLER.md](../FIKIRLER.md) listesinden).
+- **Sıra:** Gün 1 atlama, gün 2 kazı, gün 3 birikim, gün 4 veresiye, gün 5 duvar, gün 6 balta; şafak videosunu bir milli güne (29 Ekim, 30 Ağustos) sakla. Sonrasında haftada 3–4 video ([FIKIRLER.md](../FIKIRLER.md) listesinden).
 - **İlk saat:** Gelen her yoruma cevap ver. Yorumlarda "1" ve "2" diye cevap veren çok olur, hepsine kısa bir karşılık yeterli.
 - **Hikâye:** Her Reels'i yayınladıktan sonra hikâyende "Sen hangisisin?" anket çıkartmasıyla paylaş.
 - **Aynı video, diğer platformlar:** Aynı MP4'ler TikTok ve YouTube Shorts'a da uygun. Aynı adı orada da al.

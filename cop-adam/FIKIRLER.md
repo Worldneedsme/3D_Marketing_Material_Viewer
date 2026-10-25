@@ -23,6 +23,7 @@ Format: 1080×1920 dikey, 12–17 sn, siyah arka plan, piksel font etiketler, so
 | 15 | "5 DAKİKA DAHA" | HEMEN KALKAN | Bölünmüş ekran, iki yatak odası | Ertelenen sabah, ertelenen hayattır. |
 | 16 | ZİRVEYE KOŞAN | ADIM ADIM ÇIKAN | Dağ yamacı | Yavaş ama durmadan. |
 | 17 ✅ | VERESİYE VEREN | PEŞİN SATAN | Yan yana iki bakkal | Bugün peşin, yarın veresiye. |
+| 18 ✅ | ŞAFAK SAYAN | ŞAFAĞI DEĞERLENDİREN | Koğuş, Türk bayrağı, şafak sayacı | Askerlik vatan borcudur. Değerlendirmek kendine borcun. |
 
 ## Sahne akışları
 

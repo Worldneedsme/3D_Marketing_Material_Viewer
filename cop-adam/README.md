@@ -16,6 +16,7 @@ Instagram sayfası (isim, profil resmi, biyografi, açıklamalar, kapaklar): [in
 | `veresiye` | VERESİYE VEREN ↔ PEŞİN SATAN | 16 sn |
 | `duvar` | BAHANE BULAN ↔ YOL BULAN | 16,5 sn |
 | `balta` | "VAKTİM YOK" DİYEN ↔ BALTASINI BİLEYEN | 15 sn |
+| `safak` | ŞAFAK SAYAN ↔ ŞAFAĞI DEĞERLENDİREN | 18,4 sn |
 
 ## Kurulum
 
