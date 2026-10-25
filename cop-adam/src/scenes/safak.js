@@ -1,24 +1,36 @@
 // ŞAFAK SAYAN vs ŞAFAĞI DEĞERLENDİREN
 // A barracks room under a big Turkish flag. Every morning the bugle sounds.
 // One soldier stays in bed scratching tally marks into the wall; the other
-// salutes the flag and spends the day reading, training and studying, and
-// leaves with a shelf full of things he earned. Both salute the flag at the end.
+// salutes the flag and trains: the rifle range, the climbing rope, push-ups.
+// Both salute the flag at the end.
 import * as THREE from 'three';
-import { StickFigure, DIM } from '../rig.js';
+import { StickFigure, DIM, STAND_HIP } from '../rig.js';
 import { Track } from '../timeline.js';
 import { pose } from '../poses.js';
 import { stand, breathe, along } from '../moves.js';
-import { PI, lerp, smoothstep, mulberry32 } from '../math.js';
+import { PI, lerp, clamp, smooth, smoothstep, mulberry32 } from '../math.js';
 
-const DAYS = 5;
-const DAY = 2.6;
+const DAYS = 3;
+const DAY = 2.35;
 const FIRST = 0.35;
+const SALUTE = 0.7;
+const TRAIN = DAY - SALUTE;
 const dayAt = (d) => FIRST + d * DAY;
 const END = dayAt(DAYS); // after the last day
 const WALL_Z = -1.05;
 const BED_TOP = 0.58;
 const BED_Z = -0.55;
 const RED = '#e30a17';
+
+// Training stations on the right half of the room. Each one is only there on its day.
+const SHOOT = { x: 0.95, z: 1.0 };
+const TARGET = new THREE.Vector3(2.75, 1.42, 1.0);
+const SHOTS = [0.55, 0.9, 1.25]; // clip-local times
+const HOLES = [[6, -5], [-13, 9], [5, 15]];
+const ROPE = { x: 2.3, z: 0.65, top: 4.6 };
+const BELL = new THREE.Vector3(ROPE.x + 0.32, ROPE.top - 0.2, ROPE.z);
+const CLIMB = { up: [0.12, 1.0], bell: [1.0, 1.25], down: 1.6 };
+const ACTIVITIES = ['shoot', 'climb', 'pushups'];
 
 export default function build(world) {
   const { scene, mat } = world;
@@ -35,12 +47,12 @@ export default function build(world) {
     t.colorSpace = THREE.SRGBColorSpace;
     return Object.assign(t, { canvas: c });
   };
-  const box = (m, w, h, d, x, y, z) => {
+  const box = (m, w, h, d, x, y, z, parent = scene) => {
     const mesh = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), m);
     mesh.position.set(x, y, z);
     mesh.castShadow = true;
     mesh.receiveShadow = true;
-    scene.add(mesh);
+    parent.add(mesh);
     return mesh;
   };
 
@@ -143,51 +155,91 @@ export default function build(world) {
     tallyTex.needsUpdate = true;
   };
 
-  // Shelf over the right bed and what ends up on it.
+  // ---- training gear -----------------------------------------------------------------------
   const wood = new THREE.MeshStandardMaterial({ color: 0x6b5442, roughness: 0.8 });
-  box(wood, 1.7, 0.04, 0.24, 2.05, 1.5, WALL_Z + 0.12);
-  const cardTex = (text, bg, fg, size) =>
-    canvasTex(256, 160, (g, w, h) => {
-      g.fillStyle = bg;
-      g.fillRect(0, 0, w, h);
-      g.fillStyle = fg;
-      g.font = `700 ${size}px Pixel`;
-      g.textAlign = 'center';
-      g.textBaseline = 'middle';
-      g.fillText(text, w / 2, h / 2);
-      g.strokeStyle = fg;
-      g.lineWidth = 6;
-      g.strokeRect(8, 8, w - 16, h - 16);
+  // Lighter than real gunmetal so it reads against the dark room.
+  const gun = new THREE.MeshStandardMaterial({ color: 0x5d6658, roughness: 0.4, metalness: 0.35, emissive: 0x141614 });
+  const stockWood = new THREE.MeshStandardMaterial({ color: 0x8f6a45, roughness: 0.6, emissive: 0x140c06 });
+  const brass = new THREE.MeshStandardMaterial({ color: 0xc9a54a, metalness: 0.75, roughness: 0.3 });
+
+  // Paper target on a post, turned towards both the shooter and the camera.
+  const targetTex = canvasTex(256, 256, () => {});
+  let holes = -1;
+  const drawTarget = (n) => {
+    if (n === holes) return;
+    holes = n;
+    const g = targetTex.canvas.getContext('2d');
+    g.clearRect(0, 0, 256, 256);
+    ['#f2efe6', '#1b1b1b', '#f2efe6', '#1b1b1b', RED].forEach((c, i) => {
+      g.fillStyle = c;
+      g.beginPath();
+      g.arc(128, 128, 124 - i * 24, 0, PI * 2);
+      g.fill();
     });
-  const makeBook = (color) => {
-    const g = new THREE.Group();
-    const cover = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.3, 0.22), new THREE.MeshStandardMaterial({ color, roughness: 0.6 }));
-    cover.castShadow = true;
-    g.add(cover);
-    const pages = new THREE.Mesh(new THREE.BoxGeometry(0.062, 0.28, 0.2), sheet);
-    pages.position.z = 0.012;
-    g.add(pages);
-    scene.add(g);
-    return g;
+    g.fillStyle = '#050505';
+    g.strokeStyle = '#f2efe6';
+    g.lineWidth = 2;
+    for (const [x, y] of HOLES.slice(0, n)) {
+      g.beginPath();
+      g.arc(128 + x, 128 + y, 7, 0, PI * 2);
+      g.fill();
+      g.stroke();
+    }
+    targetTex.needsUpdate = true;
   };
-  const makeCard = (text, bg, fg, w, h, size) => {
-    const t = cardTex(text, bg, fg, size);
-    const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, 0.012), [sheet, sheet, sheet, sheet, new THREE.MeshStandardMaterial({ map: t, roughness: 0.6 }), sheet]);
-    m.castShadow = true;
-    scene.add(m);
-    return m;
-  };
-  const ACTIVITIES = ['read', 'pushups', 'study', 'read', 'study'];
-  const rewards = [
-    { obj: makeBook(0x8a2a22), x: 1.42, y: 1.67, rz: 0 },
-    null,
-    { obj: makeCard('EHLİYET', '#f3c9d4', '#7a1f35', 0.34, 0.22, 46), x: 1.85, y: 1.64, rz: -0.12 },
-    { obj: makeBook(0x2c4f7a), x: 1.52, y: 1.67, rz: 0.08 },
-    { obj: makeCard('SERTİFİKA', '#f7f1df', RED, 0.42, 0.3, 40), x: 2.35, y: 1.68, rz: 0.1 },
-  ];
-  // The book he reads and the clipboard he studies on.
-  const handBook = makeBook(0x8a2a22);
-  const clipboard = makeCard('', '#f4f1ea', '#999999', 0.24, 0.3, 10);
+  const targetStand = new THREE.Group();
+  targetStand.position.set(TARGET.x, 0, TARGET.z);
+  targetStand.rotation.y = -0.9;
+  box(wood, 0.05, TARGET.y - 0.3, 0.05, 0, (TARGET.y - 0.3) / 2, -0.03, targetStand);
+  const backing = new THREE.Mesh(new THREE.CylinderGeometry(0.32, 0.32, 0.03, 40), wood);
+  backing.rotation.x = PI / 2;
+  backing.position.set(0, TARGET.y, -0.02);
+  backing.castShadow = true;
+  targetStand.add(backing);
+  const face = new THREE.Mesh(new THREE.CircleGeometry(0.3, 48), new THREE.MeshStandardMaterial({ map: targetTex, roughness: 0.8 }));
+  face.position.set(0, TARGET.y, 0.0);
+  targetStand.add(face);
+  scene.add(targetStand);
+
+  // Rifle, built along +z from the right fist: stock behind, barrel ahead.
+  const rifle = new THREE.Group();
+  box(stockWood, 0.06, 0.13, 0.28, 0, 0.02, -0.17, rifle);
+  box(gun, 0.065, 0.1, 0.34, 0, 0.06, 0.13, rifle);
+  const mag = box(gun, 0.045, 0.17, 0.07, 0, -0.04, 0.17, rifle);
+  mag.rotation.x = 0.25;
+  box(stockWood, 0.07, 0.07, 0.22, 0, 0.05, 0.38, rifle);
+  const barrel = new THREE.Mesh(new THREE.CylinderGeometry(0.018, 0.018, 0.42, 10), gun);
+  barrel.rotation.x = PI / 2;
+  barrel.position.set(0, 0.07, 0.5);
+  rifle.add(barrel);
+  const flash = new THREE.Mesh(new THREE.SphereGeometry(0.07, 12, 10), new THREE.MeshBasicMaterial({ color: 0xffd27a }));
+  flash.position.set(0, 0.07, 0.74);
+  rifle.add(flash);
+  const flashLight = new THREE.PointLight(0xffb050, 0, 3.5, 2);
+  flashLight.position.copy(flash.position);
+  rifle.add(flashLight);
+  scene.add(rifle);
+
+  // Climbing rope hanging from a wall bracket, with a bell to ring at the top.
+  const ropeRig = new THREE.Group();
+  ropeRig.position.set(ROPE.x, ROPE.top, ROPE.z);
+  const armLen = ROPE.z - WALL_Z + 0.05;
+  box(metal, 0.06, 0.06, armLen, 0, 0.03, -armLen / 2 + 0.05, ropeRig);
+  box(metal, 0.45, 0.05, 0.05, 0.15, 0.03, 0, ropeRig);
+  const ropeLen = ROPE.top - 0.12;
+  const rope = new THREE.Mesh(new THREE.CylinderGeometry(0.022, 0.022, ropeLen, 8), new THREE.MeshStandardMaterial({ color: 0x9c7a4a, roughness: 0.9 }));
+  rope.position.y = -ropeLen / 2;
+  rope.castShadow = true;
+  ropeRig.add(rope);
+  const knot = new THREE.Mesh(new THREE.SphereGeometry(0.045, 10, 8), rope.material);
+  knot.position.y = -ropeLen;
+  ropeRig.add(knot);
+  box(metal, 0.012, 0.1, 0.012, BELL.x - ROPE.x, -0.05, 0, ropeRig);
+  const bell = new THREE.Mesh(new THREE.ConeGeometry(0.075, 0.13, 18, 1, true), brass);
+  bell.material.side = THREE.DoubleSide;
+  bell.position.set(BELL.x - ROPE.x, BELL.y - ROPE.top, 0);
+  ropeRig.add(bell);
+  scene.add(ropeRig);
 
   // ---- soldiers ----------------------------------------------------------------------------
   const capMat = new THREE.MeshStandardMaterial({ color: 0x4b5a3a, roughness: 0.8 });
@@ -218,72 +270,87 @@ export default function build(world) {
   const salute = {
     rHand: { p: [-0.11, 0.07, 0.11, 'head'], pole: [-0.6, 0.35, 0.15, 'chest'] },
   };
-  const sit = (x, extra = {}) => pose({ lean: 0.3, nod: 0.55, lLeg: PI / 2 - 0.1, rLeg: PI / 2 - 0.1, lKnee: PI / 2, rKnee: PI / 2, ...extra });
-  const sitPos = (x) => [x, BED_TOP + DIM.limbR * 1.2, -0.3];
 
-  // Right soldier: salute every morning, then the day's activity.
+  // Aiming: right fist at the cheek, left hand out along the line to the target.
+  const aim = new THREE.Vector3();
+  const shoot = (u, lt, dd, t) => {
+    const kick = SHOTS.reduce((a, s) => a + (lt >= s ? Math.exp(-(lt - s) * 22) : 0), 0);
+    const grip = [-0.07, 0.42, 0.2 - 0.05 * kick, 'chest'];
+    const support = (fig, out) => {
+      fig.toWorld(grip, out);
+      return out.add(aim.copy(TARGET).sub(out).setLength(0.34));
+    };
+    return {
+      pos: [SHOOT.x, STAND_HIP, SHOOT.z],
+      yaw: PI / 2,
+      pose: breathe(pose({ lean: 0.08 - 0.05 * kick, nod: 0.18, lLeg: 0.25, rLeg: -0.15, lKnee: 0.15, rKnee: 0.05 }), t, 0.3),
+      ik: { lHand: { p: support, pole: [0.25, -0.5, 0.15, 'chest'] }, rHand: { p: grip, pole: [-0.5, -0.1, -0.1, 'chest'] } },
+      ground: 0,
+    };
+  };
+
+  // Hand over hand up the rope, ring the bell, slide back down.
+  const LOW = STAND_HIP + 0.04;
+  const HIGH = ROPE.top - 1.3;
+  const climb = (u, lt) => {
+    const up = smooth((lt - CLIMB.up[0]) / (CLIMB.up[1] - CLIMB.up[0]));
+    const down = smooth((lt - CLIMB.bell[1]) / (CLIMB.down - CLIMB.bell[1]));
+    const y = lt < CLIMB.bell[1] ? lerp(LOW, HIGH, up) : lerp(HIGH, LOW, down);
+    const swing = lt < CLIMB.up[1] ? Math.sin(up * 4 * PI) : 0;
+    const grip = (k) => Math.min(y + 1.02 + 0.13 * k, ROPE.top - 0.12);
+    const ring = smoothstep(CLIMB.bell[0], CLIMB.bell[0] + 0.08, lt) * (1 - smoothstep(CLIMB.bell[1] - 0.07, CLIMB.bell[1], lt));
+    const legs = smoothstep(LOW, LOW + 0.35, y);
+    return {
+      pos: [ROPE.x, y, ROPE.z + 0.19],
+      yaw: PI,
+      pose: pose({ nod: -0.35, lean: 0.05, lLeg: legs * (0.55 + 0.25 * swing), rLeg: legs * (0.55 - 0.25 * swing), lKnee: legs * (1.1 - 0.3 * swing), rKnee: legs * (1.1 + 0.3 * swing) }),
+      ik: {
+        lHand: { p: [ROPE.x - 0.015, grip(swing), ROPE.z, 'world'], pole: [0.5, -0.2, 0.1, 'chest'] },
+        rHand: {
+          p: (fig, out) => out.set(ROPE.x + 0.015, grip(-swing), ROPE.z).lerp(BELL, ring),
+          pole: [-0.5, -0.2, 0.1, 'chest'],
+        },
+      },
+    };
+  };
+
+  const pushups = (u, lt) => {
+    const bob = 0.5 + 0.5 * Math.cos(lt * 2 * PI * 1.8);
+    const px = 1.35;
+    return {
+      pos: [px, 0.3 + 0.16 * bob, 0.65],
+      yaw: -PI / 2,
+      pitch: 1.33,
+      pose: pose({ nod: -0.5, lLeg: 0, rLeg: 0, lKnee: 0, rKnee: 0, lAnk: 1.1, rAnk: 1.1 }),
+      ik: {
+        lHand: { p: [px - 0.62, 0.02, 0.8, 'world'], pole: [0.4, 0.2, -0.3, 'chest'] },
+        rHand: { p: [px - 0.62, 0.02, 0.5, 'world'], pole: [-0.4, 0.2, -0.3, 'chest'] },
+      },
+    };
+  };
+  const TRAINING = { shoot, climb, pushups };
+
+  // Right soldier: salute every morning, then the day's training.
   const RX = 1.45;
   const rClips = [{ name: 'bed', d: FIRST + 0.05, fn: () => lying(1) }];
   for (let d = 0; d < DAYS; d++) {
     rClips.push({
       name: `salute${d}`,
-      d: 0.85 - (d === 0 ? 0.05 : 0),
+      d: SALUTE - (d === 0 ? 0.05 : 0),
       blend: d === 0 ? 0.35 : 0.3,
       fn: (u, lt, dd, t) => ({ pos: [RX, 0, 0.2], yaw: -PI, pose: breathe(pose({ nod: -0.25, lean: -0.05, lArm: 0, lOut: 0.05, lEl: 0.05 }), t, 0.3), ik: salute, ground: 0 }),
     });
     const act = ACTIVITIES[d];
-    if (act === 'read') {
-      rClips.push({
-        name: `read${d}`,
-        d: 1.75,
-        blend: 0.3,
-        fn: (u, lt, dd, t) => ({
-          pos: sitPos(1.75),
-          yaw: 0,
-          pose: breathe(sit(1.75), t, 0.4),
-          ik: { lHand: { p: [0.1, 0.32, 0.3, 'chest'] }, rHand: { p: [-0.1, 0.32, 0.3, 'chest'] } },
-        }),
-      });
-    } else if (act === 'study') {
-      rClips.push({
-        name: `study${d}`,
-        d: 1.75,
-        blend: 0.3,
-        fn: (u, lt, dd, t) => ({
-          pos: sitPos(1.75),
-          yaw: 0,
-          pose: breathe(sit(1.75, { nod: 0.7 }), t, 0.4),
-          ik: {
-            lHand: { p: [0.08, 0.05, 0.42, 'root'] },
-            rHand: { p: along([[0, [-0.06, 0.06, 0.42, 'root']]], 0, (o) => o.add(new THREE.Vector3(0.03 * Math.sin(t * 24), 0, 0.02 * Math.cos(t * 31)))) },
-          },
-        }),
-      });
-    } else {
-      rClips.push({
-        name: `pushups${d}`,
-        d: 1.75,
-        blend: 0.35,
-        fn: (u, lt) => {
-          const bob = 0.5 + 0.5 * Math.cos(lt * 2 * PI * 1.8);
-          const px = 1.35;
-          return {
-            pos: [px, 0.3 + 0.16 * bob, 0.65],
-            yaw: -PI / 2,
-            pitch: 1.33,
-            pose: pose({ nod: -0.5, lLeg: 0, rLeg: 0, lKnee: 0, rKnee: 0, lAnk: 1.1, rAnk: 1.1 }),
-            ik: {
-              lHand: { p: [px - 0.62, 0.02, 0.8, 'world'], pole: [0.4, 0.2, -0.3, 'chest'] },
-              rHand: { p: [px - 0.62, 0.02, 0.5, 'world'], pole: [-0.4, 0.2, -0.3, 'chest'] },
-            },
-          };
-        },
-      });
-    }
+    rClips.push({ name: `${act}${d}`, d: TRAIN, blend: 0.3, fn: TRAINING[act] });
   }
   rClips.push({ name: 'ready', d: 0.6, blend: 0.3, fn: stand({ x: RX, z: 0.2, yaw: 0, ground: 0, pose: { nod: -0.1, lean: -0.05 } }) });
   rClips.push({ name: 'finalSalute', d: 8, blend: 0.4, fn: (u, lt, d, t) => ({ pos: [RX - 0.25, 0, 0.2], yaw: -PI, pose: breathe(pose({ nod: -0.25, lean: -0.05, lArm: 0, lOut: 0.05, lEl: 0.05 }), t, 0.3), ik: salute, ground: 0 }) });
   const rTrack = new Track(R, rClips);
+  const clipOf = (name) => rTrack.clips.find((c) => c.name === name);
+  const shootClip = clipOf('shoot0');
+  const climbClip = clipOf('climb1');
+  const shotAt = SHOTS.map((s) => shootClip.t0 + s);
+  const bellAt = climbClip.t0 + CLIMB.bell[0] + 0.08;
 
   // Left soldier: in bed all along, reaching to scratch the wall now and then.
   const markHand = (d, lt) => ({ p: along([[0, [0.25, -0.05, 0.05, 'root']], [0.25, [-2.05 + 0.5 - d * 0.12, 0.98, WALL_Z + 0.06, 'world']], [0.55, [-2.05 + 0.5 - d * 0.12, 0.9, WALL_Z + 0.06, 'world']], [0.8, [0.25, -0.05, 0.05, 'root']]], lt), pole: [0.4, 0.3, -0.2, 'chest'] });
@@ -309,37 +376,45 @@ export default function build(world) {
     if (t < END) return Math.round(lerp(365, 50, (t - FIRST) / (END - FIRST)));
     return Math.max(0, Math.round(lerp(50, 0, (t - END) / 0.5)));
   };
-  const counter = world.addLabel('ŞAFAK 365', [0, 5.55, 0], { t1: END + 2.0 });
+  const counter = world.addLabel('ŞAFAK 365', [0, 5.55, 0], { t1: END + 1.7 });
   Object.assign(counter.el.style, { fontSize: '64px', color: RED, textShadow: '0 0 24px rgba(227, 10, 23, 0.55)' });
   for (const [text, x] of [['ŞAFAK SAYAN', -1.6], ['ŞAFAĞI DEĞERLENDİREN', 1.6]]) {
     Object.assign(world.addLabel(text, [x, 6.45, 0]).el.style, { fontSize: '34px', letterSpacing: '0.08em' });
   }
-  world.addThought('bitmedi mi daha?', L, dayAt(0) + 1.4, dayAt(0) + 2.7);
-  world.addThought('şafak daha 290...', L, dayAt(1) + 1.4, dayAt(1) + 2.7);
-  world.addThought('yat, kalk, say...', L, dayAt(2) + 1.4, dayAt(2) + 2.7);
-  world.addThought('çabuk bitse...', L, dayAt(3) + 1.4, dayAt(3) + 2.7);
-  world.addThought('ne yaptım ben bunca zaman?', L, lTrack.at('getup') + 0.1, lTrack.at('getup') + 1.7);
-  world.setCaption('Askerlik vatan borcudur.\nDeğerlendirmek kendine borcun.', END + 2.2, { top: 470 });
+  world.addThought('bitmedi mi daha?', L, dayAt(0) + 1.3, dayAt(0) + 2.3);
+  world.addThought('şafak daha 180...', L, dayAt(1) + 1.3, dayAt(1) + 2.3);
+  world.addThought('çabuk bitse...', L, dayAt(2) + 1.3, dayAt(2) + 2.3);
+  world.addThought('ne yaptım ben bunca zaman?', L, lTrack.at('getup') + 0.1, lTrack.at('getup') + 1.6);
+  world.setCaption('Askerlik vatan borcudur.\nDeğerlendirmek kendine borcun.', END + 1.8, { top: 470 });
 
   const sfx = [];
   for (let d = 0; d < DAYS; d++) {
     sfx.push({ t: dayAt(d), type: 'bugle', gain: 0.9 });
     sfx.push({ t: lTrack.at(`mark${d}`) + 0.3, type: 'scribble', gain: 0.7 });
-    if (rewards[d]) sfx.push({ t: dayAt(d) + 2.35, type: 'clink', gain: 0.8 });
   }
-  sfx.push({ t: END + 0.5, type: 'bugle', gain: 1 }, { t: END + 1.2, type: 'bugle', gain: 1 });
+  for (const t of shotAt) sfx.push({ t, type: 'shot', gain: 0.9 });
+  for (const k of [0.3, 0.55, 0.8]) sfx.push({ t: climbClip.t0 + k, type: 'rustle', gain: 0.8 });
+  sfx.push({ t: bellAt, type: 'chime', gain: 0.8 });
+  sfx.push({ t: climbClip.t0 + CLIMB.down - 0.05, type: 'step', gain: 2 });
+  sfx.push({ t: END + 0.45, type: 'bugle', gain: 1 });
   world.makeParticles('glints', new THREE.SphereGeometry(1, 8, 6), new THREE.MeshBasicMaterial({ color: 0xfff1c0 }));
-  rewards.forEach((rw, d) => {
-    if (!rw) return;
-    const r = mulberry32(40 + d);
-    const parts = Array.from({ length: 10 }, () => ({ x: rw.x, y: rw.y, z: WALL_Z + 0.25, vx: (r() - 0.5) * 1.4, vy: 0.4 + r() * 1.2, vz: r() * 0.5, delay: 0, r: 0.012 + r() * 0.012 }));
-    world.addBurst('glints', { t0: dayAt(d) + 2.35, parts, life: 0.6, gravity: 2 });
-  });
+  const glints = (at, t0, seed, n = 10) => {
+    const r = mulberry32(seed);
+    const parts = Array.from({ length: n }, () => ({ x: at.x, y: at.y, z: at.z + 0.1, vx: (r() - 0.5) * 1.4, vy: 0.4 + r() * 1.2, vz: r() * 0.5, delay: 0, r: 0.012 + r() * 0.012 }));
+    world.addBurst('glints', { t0, parts, life: 0.6, gravity: 2 });
+  };
+  shotAt.forEach((t, i) => glints(TARGET, t + 0.03, 40 + i, 6));
+  glints(BELL, bellAt, 50, 14);
 
   // ---- per frame -----------------------------------------------------------------------------------
   const v1 = new THREE.Vector3();
   const v2 = new THREE.Vector3();
-  const handsMid = (fig) => fig.handWorld('l', v1).add(fig.handWorld('r', v2)).multiplyScalar(0.5);
+  // Gear pops up for its day and folds away after.
+  const showFor = (obj, t0, t1, t) => {
+    const k = smoothstep(t0, t0 + 0.25, t) * (1 - smoothstep(t1 - 0.25, t1, t));
+    obj.visible = k > 0;
+    obj.scale.set(1, Math.max(k, 0.001), 1);
+  };
   world.onUpdate((t) => {
     rTrack.apply(t);
     lTrack.apply(t);
@@ -359,32 +434,24 @@ export default function build(world) {
     spot.intensity = 14 + 14 * glory;
     flagMat.emissiveIntensity = 0.04 + 0.06 * glory;
 
-    // Rewards appear on the shelf at the end of each day.
-    rewards.forEach((rw, d) => {
-      if (!rw) return;
-      const k = smoothstep(dayAt(d) + 2.3, dayAt(d) + 2.45, t);
-      rw.obj.visible = k > 0;
-      rw.obj.scale.setScalar(Math.max(k, 0.001));
-      rw.obj.position.set(rw.x, rw.y, WALL_Z + 0.2);
-      rw.obj.rotation.set(0, rw.obj.isGroup ? PI / 2 : 0, rw.rz);
-    });
+    showFor(targetStand, shootClip.t0 - 0.3, shootClip.t1 + 0.4, t);
+    showFor(ropeRig, climbClip.t0 - 0.3, climbClip.t1 + 0.4, t);
+    drawTarget(shotAt.filter((s) => t >= s + 0.02).length);
+    bell.rotation.z = t > bellAt ? 0.35 * Math.sin((t - bellAt) * 22) * Math.exp(-(t - bellAt) * 3) : 0;
 
-    // Book while reading, clipboard while studying.
-    const act = (name) => rTrack.clips.find((c) => c.name === name && t >= c.t0 + 0.2 && t < c.t1);
-    const reading = act('read0') || act('read3');
-    const studying = act('study2') || act('study4');
-    handBook.visible = !!reading;
-    if (reading) {
-      handBook.position.copy(handsMid(R)).add(v2.set(0, 0.06, 0.04));
-      handBook.rotation.set(-0.5, PI / 2, 0);
+    // Rifle in hand while shooting, with a muzzle flash on every shot.
+    rifle.visible = t > shootClip.t0 + 0.15 && t < shootClip.t1 - 0.12;
+    if (rifle.visible) {
+      rifle.position.copy(R.handWorld('r', v1));
+      rifle.lookAt(R.handWorld('l', v2));
     }
-    clipboard.visible = !!studying;
-    if (studying) {
-      clipboard.position.set(1.75, BED_TOP + 0.38, 0.06);
-      clipboard.rotation.set(-PI / 2 + 0.35, 0, 0);
-    }
+    const since = Math.min(...shotAt.map((s) => (t >= s ? t - s : Infinity)));
+    const f = since < 0.07 ? 1 - since / 0.07 : 0;
+    flash.visible = rifle.visible && f > 0;
+    flash.scale.setScalar(0.6 + f);
+    flashLight.intensity = rifle.visible ? 8 * f : 0;
   });
 
   const markers = Object.fromEntries([...rTrack.clips.map((c) => ['R.' + c.name, +c.t0.toFixed(2)]), ['L.getup', +lTrack.at('getup').toFixed(2)], ['END', +END.toFixed(2)]]);
-  return { duration: END + 5.0, sfx, markers };
+  return { duration: END + 3.6, sfx, markers };
 }

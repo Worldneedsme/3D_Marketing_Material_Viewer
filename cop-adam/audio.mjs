@@ -80,6 +80,11 @@ const RECIPES = {
     { src: `anoisesrc=color=brown:amplitude=1:seed=${seed}:duration=1.2`, fx: 'lowpass=f=600,afade=t=out:st=0.05:d=1.1:curve=exp', gain: 0.9 },
     { src: 'sine=frequency=55:duration=0.6', fx: 'afade=t=out:st=0:d=0.55:curve=exp', gain: 0.7 },
   ],
+  // Rifle shot: sharp crack over a low thump.
+  shot: (seed) => [
+    { src: `anoisesrc=color=white:amplitude=1:seed=${seed}:duration=0.3`, fx: 'highpass=f=500,afade=t=out:st=0:d=0.2:curve=exp', gain: 0.6 },
+    { src: 'sine=frequency=60:duration=0.3', fx: 'afade=t=out:st=0:d=0.25:curve=exp', gain: 0.6 },
+  ],
   // Short bugle call (an original phrase on the bugle's natural notes).
   bugle: () =>
     [

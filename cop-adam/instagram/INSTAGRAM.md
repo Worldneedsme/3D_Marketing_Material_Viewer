@@ -124,7 +124,7 @@ Askerlik vatan borcudur. Değerlendirmek kendine borcun. 🇹🇷
 
 Aynı koğuş, aynı bayrak, aynı şafak.
 Biri günleri duvara çizdi.
-Öbürü her sabah bayrağa selam durdu, okudu, çalıştı, ehliyetini aldı.
+Öbürü her sabah bayrağa selam durdu; atış yaptı, ipe tırmandı, şınav çekti.
 Tezkere ikisine de geldi; biri eli boş döndü.
 
 ŞAFAK SAYAN mı, ŞAFAĞI DEĞERLENDİREN mi? 👇
@@ -135,6 +135,26 @@ Tezkere ikisine de geldi; biri eli boş döndü.
 Sabit yorum: `1️⃣ Şafak sayan  2️⃣ Şafağı değerlendiren — askerde ne kazandın? Yaz bakalım 🇹🇷`
 
 > Askeri hesapları ve 30 Ağustos, 29 Ekim gibi milli günleri yakalarsan bu video en çok o günlerde yayılır. 29 Ekim'e denk getir.
+
+### 8. BEDELLİ YAPAN ↔ ASKERLİK YAPAN (`bedelli.mp4`)
+
+```
+Bedel parayla ödenir, vatan borcu alın teriyle. 🇹🇷
+
+Aynı koğuşta uyandılar, aynı bayrağa selam durdular.
+Biri bedelini ödedi, çantasını alıp çıktı.
+Öbürü kaldı: atış talimi, ip tırmanışı, şınav... 180 gün boyunca.
+Tezkere günü bayrağın önünde tek başına o vardı.
+
+Askerliğini yapan tüm Mehmetçiklere selam olsun. 🫡
+Sen ne yaptın, yaparken en çok neyi öğrendin? 👇
+
+#askerlik #bedelliaskerlik #bedelli #mehmetçik #vatanborcu #tezkere #şafak #vatan #türkbayrağı #türkaskeri #askerlikanıları #çöpadam #motivasyon #keşfet #reels
+```
+
+Sabit yorum: `Askerliğini yapmış olanlar burada mı? Kaç ay yaptın, nerede yaptın? Yaz bakalım 🇹🇷`
+
+> Yorumlarda bedelli tartışması çıkabilir. Kimseyi küçümseyen cevap verme; videonun mesajı askerlik yapanı yüceltmek. "Herkese saygı, ama alın teri başka" tonunda kal.
 
 ## Paylaşım planı
 

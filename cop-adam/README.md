@@ -16,7 +16,8 @@ Instagram sayfası (isim, profil resmi, biyografi, açıklamalar, kapaklar): [in
 | `veresiye` | VERESİYE VEREN ↔ PEŞİN SATAN | 16 sn |
 | `duvar` | BAHANE BULAN ↔ YOL BULAN | 16,5 sn |
 | `balta` | "VAKTİM YOK" DİYEN ↔ BALTASINI BİLEYEN | 15 sn |
-| `safak` | ŞAFAK SAYAN ↔ ŞAFAĞI DEĞERLENDİREN | 18,4 sn |
+| `safak` | ŞAFAK SAYAN ↔ ŞAFAĞI DEĞERLENDİREN | 11 sn |
+| `bedelli` | BEDELLİ YAPAN ↔ ASKERLİK YAPAN | 11 sn |
 
 ## Kurulum
 
@@ -39,7 +40,7 @@ node render.mjs atlama --ses                 # videoyu tekrar render etmeden sad
 node render.mjs profil --size 1080x1080 --stills 0   # profil resmi (kare)
 ```
 
-Bir sahne yaklaşık 7–8 dakikada render olur.
+Render ekran kartıyla yapılır; 11 saniyelik bir sahne GTX 1050 Ti'de yaklaşık 1 dakika sürer. Ekran kartı yoksa ya da görüntü bozuk çıkarsa `--cpu` ile yazılımsal grafiğe geçilir (yavaş, sahne başına birkaç dakika). `--jobs 2` kareleri birden fazla sekmede çizer; hızlı CPU'larda işe yarayabilir.
 
 ## Tarayıcıda canlı izleme
 
