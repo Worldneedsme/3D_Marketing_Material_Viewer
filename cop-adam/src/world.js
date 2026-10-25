@@ -317,7 +317,10 @@ export class World {
       l.el.style.opacity = a.toFixed(3);
       if (a <= 0) continue;
       const p = typeof l.anchor === 'function' ? l.anchor(t) : l.anchor;
-      const [x, y] = this.project(p);
+      const [px, y] = this.project(p);
+      // Keep text on screen even when its anchor is near the edge.
+      const half = l.el.offsetWidth / 2 + 24;
+      const x = Math.min(Math.max(px, half), this.width - half);
       const rise = (1 - fadeIn) * 14 + l.dy;
       l.el.style.transform = `translate(${x.toFixed(1)}px, ${(y + rise).toFixed(1)}px) translate(-50%, -100%)`;
     }

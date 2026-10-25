@@ -44,6 +44,42 @@ const RECIPES = {
     { src: `anoisesrc=color=white:amplitude=0.6:seed=${seed}:duration=0.06`, fx: 'highpass=f=1500,afade=t=out:st=0:d=0.05:curve=exp', gain: 0.35 },
     { src: 'sine=frequency=2093:duration=0.5', fx: 'adelay=50|50,afade=t=out:st=0:d=0.5:curve=exp', gain: 0.35 },
   ],
+  // Paper bag picked up.
+  rustle: (seed) => [
+    { src: `anoisesrc=color=white:amplitude=0.6:seed=${seed}:duration=0.3`, fx: 'bandpass=f=3200:width_type=o:w=2,afade=t=in:d=0.02,afade=t=out:st=0.05:d=0.22:curve=exp', gain: 0.3 },
+  ],
+  // Pen scratching in a notebook.
+  scribble: (seed) => [
+    { src: `anoisesrc=color=pink:amplitude=0.6:seed=${seed}:duration=0.5`, fx: 'highpass=f=2500,lowpass=f=7000,tremolo=f=13:d=0.9,afade=t=out:st=0.3:d=0.2', gain: 0.22 },
+  ],
+  // Light switched off.
+  click: (seed) => [
+    { src: 'sine=frequency=1300:duration=0.04', fx: 'afade=t=out:st=0:d=0.035', gain: 0.35 },
+    { src: `anoisesrc=color=brown:amplitude=0.6:seed=${seed}:duration=0.08`, fx: 'lowpass=f=900,afade=t=out:st=0:d=0.07:curve=exp', gain: 0.35 },
+  ],
+  // Stone block set down.
+  block: (seed) => [
+    { src: 'sine=frequency=70:duration=0.3', fx: 'afade=t=out:st=0:d=0.28:curve=exp', gain: 0.6 },
+    { src: `anoisesrc=color=brown:amplitude=0.8:seed=${seed}:duration=0.2`, fx: 'lowpass=f=500,afade=t=out:st=0:d=0.18:curve=exp', gain: 0.55 },
+  ],
+  // Axe biting into wood.
+  chop: (seed) => [
+    { src: `anoisesrc=color=brown:amplitude=0.9:seed=${seed}:duration=0.25`, fx: 'bandpass=f=700:width_type=o:w=1.5,afade=t=out:st=0:d=0.2:curve=exp', gain: 0.6 },
+    { src: 'sine=frequency=180:duration=0.12', fx: 'afade=t=out:st=0:d=0.1:curve=exp', gain: 0.35 },
+  ],
+  // Steel on a spinning grindstone.
+  grind: (seed) => [
+    { src: `anoisesrc=color=white:amplitude=0.5:seed=${seed}:duration=1.5`, fx: 'bandpass=f=4200:width_type=o:w=1,tremolo=f=9:d=0.5,afade=t=in:d=0.1,afade=t=out:st=1.2:d=0.3', gain: 0.18 },
+  ],
+  // Trunk giving way.
+  creak: () => [
+    { src: 'sine=frequency=140:duration=1.0', fx: 'vibrato=f=7:d=0.6,afade=t=in:d=0.2,afade=t=out:st=0.6:d=0.4', gain: 0.25 },
+  ],
+  // Tree hitting the ground.
+  crash: (seed) => [
+    { src: `anoisesrc=color=brown:amplitude=1:seed=${seed}:duration=1.2`, fx: 'lowpass=f=600,afade=t=out:st=0.05:d=1.1:curve=exp', gain: 0.9 },
+    { src: 'sine=frequency=55:duration=0.6', fx: 'afade=t=out:st=0:d=0.55:curve=exp', gain: 0.7 },
+  ],
   // Soft footstep on a plank.
   step: (seed) => [
     { src: `anoisesrc=color=brown:amplitude=0.5:seed=${seed}:duration=0.12`, fx: 'lowpass=f=900,afade=t=out:st=0:d=0.1:curve=exp', gain: 0.18 },

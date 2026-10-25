@@ -70,10 +70,57 @@ HARCAYAN mı, BİRİKTİREN mi? 👇
 
 Sabit yorum: `1️⃣ Harcayan  2️⃣ Biriktiren — maaş yatınca ilk ne yapıyorsun?`
 
+### 4. VERESİYE VEREN ↔ PEŞİN SATAN (`veresiye.mp4`, kapak: `kapak-veresiye.png`)
+
+```
+Bugün peşin, yarın veresiye. 🏪
+
+Aynı müşteri, aynı mal.
+Biri her satışı deftere yazdı, raflar boşaldı, ışık söndü.
+Öbürü parayı peşin aldı, rafları her gün yeniden doldu.
+
+VERESİYE VEREN mi, PEŞİN SATAN mı? 👇
+
+#esnaf #ticaret #bakkal #girişimcilik #işletme #nakitakışı #veresiye #parayönetimi #hayatdersleri #çöpadam #keşfet #reels
+```
+
+Sabit yorum: `1️⃣ Veresiye veren  2️⃣ Peşin satan — sen hiç "deftere yaz" dedin mi? 😄`
+
+### 5. BAHANE BULAN ↔ YOL BULAN (`duvar.mp4`, kapak: `kapak-duvar.png`)
+
+```
+İsteyen yolunu bulur, istemeyen bahanesini. 🧱
+
+İkisinin önünde de aynı duvar, yanında aynı taşlar vardı.
+Biri taşları basamak yaptı. Öbürü "çok yüksek" deyip oturdu.
+
+BAHANE BULAN mı, YOL BULAN mı? 👇
+
+#bahane #azim #motivasyon #kişiselgelişim #hedef #başarı #disiplin #hayatdersleri #çöpadam #animasyon #keşfet #reels
+```
+
+Sabit yorum: `1️⃣ Bahane bulan  2️⃣ Yol bulan — en sık kullandığın bahane ne?`
+
+### 6. "VAKTİM YOK" DİYEN ↔ BALTASINI BİLEYEN (`balta.mp4`, kapak: `kapak-balta.png`)
+
+```
+Baltanı bilemeye vakit ayır. 🪓
+
+Biri durmadan vurdu, ağacı çizik bile almadı.
+Öbürü durup baltasını biledi, üç vuruşta devirdi.
+Çok çalışmak yetmez; doğru araçla çalışmak gerekir.
+
+"VAKTİM YOK" DİYEN mi, BALTASINI BİLEYEN mi? 👇
+
+#verimlilik #çalışmak #öğrenmek #kişiselgelişim #zamanyönetimi #motivasyon #başarı #hayatdersleri #çöpadam #animasyon #keşfet #reels
+```
+
+Sabit yorum: `1️⃣ Vaktim yok diyen  2️⃣ Baltasını bileyen — senin baltan ne? (kitap, kurs, uyku...)`
+
 ## Paylaşım planı
 
 - **Saat:** Türkiye'de akşam 20:00–22:00 arası.
-- **Sıra:** Gün 1 atlama, gün 2 kazı, gün 3 birikim. Sonrasında haftada 3–4 video ([FIKIRLER.md](../FIKIRLER.md) listesinden).
+- **Sıra:** Gün 1 atlama, gün 2 kazı, gün 3 birikim, gün 4 veresiye, gün 5 duvar, gün 6 balta. Sonrasında haftada 3–4 video ([FIKIRLER.md](../FIKIRLER.md) listesinden).
 - **İlk saat:** Gelen her yoruma cevap ver. Yorumlarda "1" ve "2" diye cevap veren çok olur, hepsine kısa bir karşılık yeterli.
 - **Hikâye:** Her Reels'i yayınladıktan sonra hikâyende "Sen hangisisin?" anket çıkartmasıyla paylaş.
 - **Aynı video, diğer platformlar:** Aynı MP4'ler TikTok ve YouTube Shorts'a da uygun. Aynı adı orada da al.

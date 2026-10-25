@@ -13,6 +13,9 @@ Instagram sayfası (isim, profil resmi, biyografi, açıklamalar, kapaklar): [in
 | `atlama` | KAFASINDA KURAN ↔ YAPAN | 16,5 sn |
 | `kazi` | PES EDEN ↔ DEVAM EDEN | 15 sn |
 | `birikim` | HARCAYAN ↔ BİRİKTİREN | 15,5 sn |
+| `veresiye` | VERESİYE VEREN ↔ PEŞİN SATAN | 16 sn |
+| `duvar` | BAHANE BULAN ↔ YOL BULAN | 16,5 sn |
+| `balta` | "VAKTİM YOK" DİYEN ↔ BALTASINI BİLEYEN | 15 sn |
 
 ## Kurulum
 

@@ -8,11 +8,11 @@ Format: 1080×1920 dikey, 12–17 sn, siyah arka plan, piksel font etiketler, so
 |---|---|---|---|---|
 | 1 ✅ | KAFASINDA KURAN | YAPAN | Atlama kulesi | Ne kadar beklersen, su o kadar soğuk görünür. |
 | 2 ✅ | PES EDEN | DEVAM EDEN | Yer altına tünel kazıyorlar | Sabreden derviş muradına ermiş. |
-| 3 | BAHANE BULAN | YOL BULAN | Önlerinde yüksek bir duvar | İsteyen yolunu bulur, istemeyen bahanesini. |
+| 3 ✅ | BAHANE BULAN | YOL BULAN | Önlerinde yüksek bir duvar | İsteyen yolunu bulur, istemeyen bahanesini. |
 | 4 ✅ | HARCAYAN | BİRİKTİREN | Gökten altın para yağıyor | Damlaya damlaya göl olur. |
 | 5 | "PAZARTESİ BAŞLARIM" | BUGÜN BAŞLAYAN | Spor salonu, takvim | Pazartesi bir gün değil, bir bahane. |
 | 6 | BİLGİ BİRİKTİREN | UYGULAYAN | Kitap yığını ve uçurum | Bildiğin değil, yaptığın seni yukarı taşır. |
-| 7 | "VAKTİM YOK" DİYEN | BALTASINI BİLEYEN | Ağaç kesme | Baltanı bilemeye vakit ayır. |
+| 7 ✅ | "VAKTİM YOK" DİYEN | BALTASINI BİLEYEN | Ağaç kesme | Baltanı bilemeye vakit ayır. |
 | 8 | ŞİKAYET EDEN | ÇÖZEN | Su alan iki kayık | Şikayet etmek kayığı yüzdürmez. |
 | 9 | ERTELEYEN | PLANLAYAN | Duvar örme, 30 günlük takvim | Her gün bir tuğla. |
 | 10 | KISA YOL ARAYAN | TEMEL ATAN | İki kule inşaatı ve fırtına | Hızlı yükselen, temelsizse hızlı düşer. |
@@ -22,6 +22,7 @@ Format: 1080×1920 dikey, 12–17 sn, siyah arka plan, piksel font etiketler, so
 | 14 | GÖSTERİŞ YAPAN | YATIRIM YAPAN | Parlak araba ve tohum | Biri gösterir, öbürü büyütür. |
 | 15 | "5 DAKİKA DAHA" | HEMEN KALKAN | Bölünmüş ekran, iki yatak odası | Ertelenen sabah, ertelenen hayattır. |
 | 16 | ZİRVEYE KOŞAN | ADIM ADIM ÇIKAN | Dağ yamacı | Yavaş ama durmadan. |
+| 17 ✅ | VERESİYE VEREN | PEŞİN SATAN | Yan yana iki bakkal | Bugün peşin, yarın veresiye. |
 
 ## Sahne akışları
 
@@ -33,7 +34,7 @@ Düşünceler: *ya su soğuksa? · ya derinse? · ya herkes bakıyorsa? · ya be
 Kesit görünüm: toprak katmanları, ikisinin de altında aynı derinlikte parlayan bir elmas. İkisi de kazmayla aşağı kazıyor. Pes eden elmasa bir karış kala kazmayı atıp tünelden geri tırmanıyor. Devam eden iki kazma daha vuruyor, elmas ışık saçıyor.
 Düşünceler: *bu iş olmuyor · boşuna uğraşıyorum · herkes çoktan bıraktı.*
 
-**3. BAHANE BULAN ↔ YOL BULAN**
+**3. BAHANE BULAN ↔ YOL BULAN** (hazır: `node render.mjs duvar`)
 İkisinin önünde de aynı yükseklikte bir duvar. Bahane bulan duvara sırtını dayayıp oturuyor. Yol bulan etraftaki taşları tek tek taşıyıp basamak yapıyor, duvarı aşıp öbür tarafta güneşe doğru yürüyor.
 Düşünceler: *çok yüksek · ekipmanım yok · şansım yok.*
 
@@ -48,7 +49,7 @@ Düşünceler: *pazartesi başlarım · bu hafta yoğunum · bayramdan sonra.*
 **6. BİLGİ BİRİKTİREN ↔ UYGULAYAN**
 İkisinin de önüne kitaplar düşüyor. Biri kitapları üst üste yığıp tepesine oturuyor ve okumaya devam ediyor, yerinden kıpırdamıyor. Öbürü kitapları basamak gibi dizip yüksek kayalığa çıkıyor ve bayrağı dikiyor.
 
-**7. "VAKTİM YOK" DİYEN ↔ BALTASINI BİLEYEN**
+**7. "VAKTİM YOK" DİYEN ↔ BALTASINI BİLEYEN** (hazır: `node render.mjs balta`)
 İkisi de baltayla ağaç kesiyor. Baltalar körleşiyor. Biri daha hızlı ve daha sert vurmaya devam ediyor, ağaç neredeyse hiç kesilmiyor. Öbürü durup baltasını biliyor (kıvılcımlar), sonra üç vuruşta ağacı deviriyor.
 Düşünceler: *durursam geri kalırım · vaktim yok.*
 

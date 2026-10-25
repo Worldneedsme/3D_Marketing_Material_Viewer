@@ -1,6 +1,7 @@
+import * as THREE from 'three';
 import { pose, walk, run, strideOf } from './poses.js';
 import { STAND_HIP } from './rig.js';
-import { lerp, noise1, PI } from './math.js';
+import { lerp, noise1, smooth, PI } from './math.js';
 
 const groundAt = (ground, x) => (typeof ground === 'function' ? ground(x) : ground);
 
@@ -64,4 +65,25 @@ export function fly({ p0, v, yaw, pitch, poseAt }) {
     pitch: pitch(lt),
     pose: poseAt(lt),
   });
+}
+
+// IK target that travels through key points: keys are [[time, [x, y, z, space]], ...]
+// with space 'root', 'chest', 'head' or 'world'. `c` is the clip-local time;
+// `wobble(out)` can nudge the result (e.g. scribbling).
+const _a = new THREE.Vector3();
+export function along(keys, c, wobble) {
+  return (fig, out) => {
+    let i = keys.findIndex(([kt]) => c <= kt);
+    if (i < 0) fig.toWorld(keys[keys.length - 1][1], out);
+    else if (i === 0) fig.toWorld(keys[0][1], out);
+    else {
+      const [t0, a] = keys[i - 1];
+      const [t1, b] = keys[i];
+      fig.toWorld(a, _a);
+      fig.toWorld(b, out);
+      out.lerp(_a, 1 - smooth((c - t0) / (t1 - t0)));
+    }
+    if (wobble) wobble(out);
+    return out;
+  };
 }
