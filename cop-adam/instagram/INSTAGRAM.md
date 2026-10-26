@@ -156,6 +156,135 @@ Sabit yorum: `Askerliğini yapmış olanlar burada mı? Kaç ay yaptın, nerede 
 
 > Yorumlarda bedelli tartışması çıkabilir. Kimseyi küçümseyen cevap verme; videonun mesajı askerlik yapanı yüceltmek. "Herkese saygı, ama alın teri başka" tonunda kal.
 
+### 9. "DIŞARISI DAHA İYİ" DİYEN ↔ YERLİ ÜRETEN (`yerli.mp4`)
+
+```
+Hepimizin etrafında en az bir tane var: "Abi bizden olmaz, dışarısı başka" diyen. 😄
+
+O koltuğunda oturup telefonda yabancı ürünlere bakadursun,
+birileri sabah erkenden atölyeyi açtı, kaynağı yaktı.
+Önce kendi otomobilimiz yollara çıktı, sonra kendi İHA'mız göklere.
+Bir gün kapısına bir koli geldi, açtı baktı: MADE IN TÜRKİYE. 🇹🇷
+
+Bu ülkede üreten, emek veren herkesin eline sağlık.
+Cumhuriyetimizin 103. yılı kutlu olsun! ❤️
+
+💬 Yorumlara yaz, sen hangisisin?
+1️⃣ "Dışarısı daha iyi" diyen
+2️⃣ Yerli üreten / yerliyi destekleyen
+```
+
+Sabit yorum: `Ben 2'yim 🇹🇷 Sen hangisisin? Evinde en sevdiğin yerli ürün ne, onu da yaz 👇`
+
+> 29 Ekim sabahı paylaş. Videoda marka logosu yok; otomobil ve İHA özgün tasarım.
+
+### 10. FAST FOOD YİYEN ↔ EVDE YEMEK YAPAN (`beslenme.mp4`)
+
+```
+"Yemek yapmaya kim uğraşacak ya" diyen arkadaşı etiketle. 😄
+
+Biri koltuktan kalkmadan söyledi, poşetler kapıya yığıldı.
+Öbürü yarım saat mutfağa girdi; doğradı, karıştırdı, afiyetle yedi.
+Üç öğün sonra biri koltuktan kalkamıyor, öbürü zıplıyor. 🥗
+
+Evde pişen yemeğin tadı da, enerjisi de başka.
+Mutfağa giren herkesin eline sağlık! ❤️
+
+💬 Yorumlara yaz, sen hangisisin?
+1️⃣ Fast food yiyen
+2️⃣ Evde yemek yapan
+```
+
+Sabit yorum: `Ben 2'yim 🍲 Sen hangisisin? En sevdiğin ev yemeği ne, onu da yaz 👇`
+
+> "Arkadaşını etiketle" ile açmak yorumları ve paylaşımı artırır. Kimseyi kilosu üzerinden tiye almadık; fark enerji ve alışkanlık üzerinden anlatılıyor, yorumlarda da bu tonda kal.
+
+### 11. SORGULAMADAN İNANAN ↔ ARAŞTIRAN (`fon.mp4`)
+
+```
+Telefon çaldı: "Hiç düşmeyen fonumuz var!" 📞
+
+Biri sorgulamadan inandı, bir ömürlük birikimini tek kasaya koydu.
+Rakamlar uçtu, sevindi... sonra kasaya kilit vuruldu.
+Satış yapan komisyonunu aldı ve ortadan kayboldu.
+Öbürü sordu, okudu, araştırdı; parasını tek sepete koymadı.
+
+Parasına ulaşamayan herkese geçmiş olsun, kimse bunu hak etmedi. 💔
+Ama bir daha biri "garanti" derse önce şunu soralım: "Kime garanti?"
+
+💬 Yorumlara yaz, sen hangisisin?
+1️⃣ Sorgulamadan inanan
+2️⃣ Araştıran
+```
+
+Sabit yorum: `Ben 2'yim, okumadan imza atmam ✍️ Sen hangisisin? Sana da "hiç düşmez" diye arayan oldu mu?`
+
+> Videoda ve açıklamada hiçbir banka, fon ya da kişi adı yok; soruşturma sürüyor, isim verme.
+
+### 12. PAZARTESİCİ ↔ BUGÜNCÜ (`pazartesi.mp4`, pazartesi sabahı)
+
+```
+Hayırlı haftalar! Bu pazartesi de "pazartesi başlarım" diyen var mı aramızda? 😄
+
+Biri her pazartesi koltuktan doğrulup söz verdi, sonra telefona geri döndü.
+Öbürü takvime bakmadı; her gün biraz kaldırdı, her hafta biraz büyüdü.
+Dört hafta sonra biri hâlâ "bu pazartesi kesin" diyor, öbürü halteri başının üstünde tutuyor. 🏋️
+
+Başlamak için doğru gün yok, sadece bugün var.
+Bugün başlayan herkese kolay gelsin! 💪
+
+💬 Yorumlara yaz, sen hangisisin?
+1️⃣ Pazartesici
+2️⃣ Bugüncü
+```
+
+Sabit yorum: `Ben 2'yim, bugün başladım 💪 Sen hangisisin? Hep pazartesiye ertelediğin şey ne, yaz bakalım 👇`
+
+> Pazartesi sabahı 08:00–09:00 arası paylaş; #pazartesi ve "hayırlı haftalar" o saatlerde gündemde.
+
+### 13. YETENEKLİ ↔ EMEKÇİ (`yetenek.mp4`, öğle)
+
+```
+Mahallede herkesin bildiği o çocuk vardı: topu yere düşürmeden yüz kere sektirirdi. ⚽
+
+"Ben zaten iyiyim" dedi, antrenmanı yarına bıraktı.
+Yan sokaktaki çocuk ise sakardı; her gün o duvara top vurdu, yağmurda bile.
+Yıllar sonra biri hâlâ aynı duvarın dibinde;
+öbürü stadyum ışıkları altında kupayı kaldırıyor, takım arkadaşları üstüne koşuyor. 🏆
+
+Yetenek kapıyı açar, ama içeride tutan emektir.
+Her gün ter döken herkese selam olsun! 🙌
+
+💬 Yorumlara yaz, sen hangisisin?
+1️⃣ Yetenekli
+2️⃣ Emekçi
+```
+
+Sabit yorum: `Ben 2'yim, yetenek yoksa emek var 💪 Sen hangisisin? Senin mahallende de böyle bir yetenek var mıydı?`
+
+> Öğle 12:00–13:00 arası paylaş. Videoda gerçek bir futbolcu yok; yorumlarda isim tartışması çıkarsa kimseyi küçümseme.
+
+### 14. KÜSEN ↔ DOST KALAN (`derbi.mp4`, derbi akşamı)
+
+```
+Derbi akşamı, aynı koltukta iki farklı renk. ⚽
+
+Biri gol yiyince kumandayı fırlattı, arkadaşına küstü, maç sonunda yalnız kaldı.
+Öbürü başını tuttu, sonra güldü; arkadaşının sırtına vurdu.
+Düdük çalınca iki bardak çay koydu, "bu sefer sizin olsun" dedi. ☕
+
+Takım tutmak güzel, dostluğu tutmak daha güzel.
+Bu akşam kim kazanırsa kazansın, çaylar bizden! ❤️
+
+💬 Yorumlara yaz, sen hangisisin?
+1️⃣ Küsen
+2️⃣ Dost kalan
+```
+
+Sabit yorum: `Ben 2'yim, maçtan sonra çay bizden ☕ Sen hangisisin? Rakip takımı tutan en yakın arkadaşını etiketle 👇`
+
+> Akşam 19:00–21:00 arası, maçtan önce paylaş. İki ana karakter de aynı renkleri, arkadaşları rakip renkleri taşıyor; hiçbir takım "kötü" tarafta değil. Takım adı ve arma yok. Yorumlarda isim yazanlara cevap verirken de isim tekrarlama. Mağdurlarla dalga geçen yorumları gizle. Bu bir yatırım tavsiyesi değil, "sormadan imza atma" uyarısı.
+
 ## Paylaşım planı
 
 - **Saat:** Türkiye'de akşam 20:00–22:00 arası.

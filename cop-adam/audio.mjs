@@ -85,6 +85,23 @@ const RECIPES = {
     { src: `anoisesrc=color=white:amplitude=1:seed=${seed}:duration=0.3`, fx: 'highpass=f=500,afade=t=out:st=0:d=0.2:curve=exp', gain: 0.6 },
     { src: 'sine=frequency=60:duration=0.3', fx: 'afade=t=out:st=0:d=0.25:curve=exp', gain: 0.6 },
   ],
+  // Electric motor and propeller hum, rising and fading.
+  whir: (seed) => [
+    { src: 'sine=frequency=170:duration=2.4', fx: 'vibrato=f=38:d=0.25,afade=t=in:d=0.4,afade=t=out:st=1.8:d=0.6', gain: 0.16 },
+    { src: `anoisesrc=color=pink:amplitude=0.5:seed=${seed}:duration=2.4`, fx: 'bandpass=f=650:width_type=o:w=1,tremolo=f=42:d=0.6,afade=t=in:d=0.4,afade=t=out:st=1.8:d=0.6', gain: 0.2 },
+  ],
+  // Crowd roaring a goal on the TV.
+  crowd: (seed) => [
+    { src: `anoisesrc=color=pink:amplitude=0.8:seed=${seed}:duration=2.6`, fx: 'bandpass=f=750:width_type=o:w=2,afade=t=in:d=0.15,afade=t=out:st=0.8:d=1.8', gain: 0.55 },
+    { src: `anoisesrc=color=white:amplitude=0.5:seed=${seed + 1}:duration=1.6`, fx: 'highpass=f=1800,lowpass=f=5000,tremolo=f=6:d=0.5,afade=t=in:d=0.1,afade=t=out:st=0.4:d=1.2', gain: 0.18 },
+  ],
+  // Referee's final whistle: three blasts.
+  whistle: () =>
+    [0, 0.32, 0.64].map((at, i) => {
+      const ms = Math.round(at * 1000);
+      const len = i === 2 ? 0.55 : 0.22;
+      return { src: `sine=frequency=2900:duration=${len}`, fx: `vibrato=f=32:d=0.15,afade=t=in:d=0.02,afade=t=out:st=${(len - 0.06).toFixed(2)}:d=0.06,adelay=${ms}|${ms}`, gain: 0.22 };
+    }),
   // Short bugle call (an original phrase on the bugle's natural notes).
   bugle: () =>
     [

@@ -18,6 +18,14 @@ Instagram sayfası (isim, profil resmi, biyografi, açıklamalar, kapaklar): [in
 | `balta` | "VAKTİM YOK" DİYEN ↔ BALTASINI BİLEYEN | 15 sn |
 | `safak` | ŞAFAK SAYAN ↔ ŞAFAĞI DEĞERLENDİREN | 11 sn |
 | `bedelli` | BEDELLİ YAPAN ↔ ASKERLİK YAPAN | 11 sn |
+| `yerli` | "DIŞARISI DAHA İYİ" DİYEN ↔ YERLİ ÜRETEN | 15 sn |
+| `beslenme` | FAST FOOD YİYEN ↔ EVDE YEMEK YAPAN | 14 sn |
+| `fon` | SORGULAMADAN İNANAN ↔ ARAŞTIRAN | 13,5 sn |
+| `pazartesi` | PAZARTESİCİ ↔ BUGÜNCÜ | 13,8 sn |
+| `yetenek` | YETENEKLİ ↔ EMEKÇİ | 13,5 sn |
+| `derbi` | KÜSEN ↔ DOST KALAN | 13,5 sn |
+
+Günlük üretim akışı (her sabah gündemden 3 konu, onay, üretim): [GUNLUK.md](GUNLUK.md)
 
 ## Kurulum
 

@@ -24,6 +24,13 @@ Format: 1080×1920 dikey, 12–17 sn, siyah arka plan, piksel font etiketler, so
 | 16 | ZİRVEYE KOŞAN | ADIM ADIM ÇIKAN | Dağ yamacı | Yavaş ama durmadan. |
 | 17 ✅ | VERESİYE VEREN | PEŞİN SATAN | Yan yana iki bakkal | Bugün peşin, yarın veresiye. |
 | 18 ✅ | ŞAFAK SAYAN | ŞAFAĞI DEĞERLENDİREN | Koğuş, Türk bayrağı, şafak sayacı | Askerlik vatan borcudur. Değerlendirmek kendine borcun. |
+| 19 ✅ | BEDELLİ YAPAN | ASKERLİK YAPAN | Koğuş, atış, ip tırmanışı | Bedel parayla ödenir, vatan borcu alın teriyle. |
+| 20 ✅ | "DIŞARISI DAHA İYİ" DİYEN | YERLİ ÜRETEN | Koltuk ve üretim bandı: otomobil, İHA, ihracat | Yerli malı yurdun malı, herkes onu kullanmalı. |
+| 21 ✅ | FAST FOOD YİYEN | EVDE YEMEK YAPAN | Koltuk ve mutfak tezgâhı, enerji sayaçları | Az ye, öz ye. Sağlık mutfakta başlar. |
+| 22 ✅ | SORGULAMADAN İNANAN | ARAŞTIRAN | Takım elbiseli satıcı, altın kasa, kilit | Bedava peynir fare kapanında olur. |
+| 23 ✅ | PAZARTESİCİ | BUGÜNCÜ | Duvar takvimi, koltuk ve dambıllar | Bugünün işini yarına bırakma. |
+| 24 ✅ | YETENEKLİ | EMEKÇİ | Sokak duvarı, top, yıllar, stadyum ışıkları | Emek olmadan yemek olmaz. |
+| 25 ✅ | KÜSEN | DOST KALAN | Derbi akşamı iki salon, atkılar, çay | Maç 90 dakika, dostluk ömür boyu. |
 
 ## Sahne akışları
 
