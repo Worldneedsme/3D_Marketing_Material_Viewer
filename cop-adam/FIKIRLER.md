@@ -1,6 +1,6 @@
 # Çöp adam video fikirleri
 
-Her fikirde iki çöp adam var: solda **haksız çıkan**, sağda **haklı çıkan** taraf. İzleyici kimin kazandığını ilk 2 saniyede anlamalı. Kazanan taraf hiç konuşmaz, sadece yapar. Kaybeden tarafın kafasından geçenler küçük yazılarla görünür.
+Her fikirde iki çöp adam ve iki isimli taraf var. **28.10.2026'dan itibaren** taraflar haksız/haklı değil, gündemden çıkan iki savunulabilir seçimdir: ikisinin de kazancı ve bedeli gösterilir, karar izleyicinin (bkz. GUNLUK.md "Tartışma dozu yüksek içerik"). Aşağıdaki 1-32 numaralı eski fikirlerde solda **haksız çıkan**, sağda **haklı çıkan** taraf vardı.
 
 Format: 1080×1920 dikey, 12–17 sn, siyah arka plan, piksel font etiketler, sonda tek satırlık bir ders (mümkünse bir Türk atasözü).
 
@@ -31,6 +31,16 @@ Format: 1080×1920 dikey, 12–17 sn, siyah arka plan, piksel font etiketler, so
 | 23 ✅ | PAZARTESİCİ | BUGÜNCÜ | Duvar takvimi, koltuk ve dambıllar | Bugünün işini yarına bırakma. |
 | 24 ✅ | YETENEKLİ | EMEKÇİ | Sokak duvarı, top, yıllar, stadyum ışıkları | Emek olmadan yemek olmaz. |
 | 25 ✅ | KÜSEN | DOST KALAN | Derbi akşamı iki salon, atkılar, çay | Maç 90 dakika, dostluk ömür boyu. |
+| 27 ✅ | HOLİGAN | SPORSEVER | Derbi akşamı iki salon; holigan renksiz gri kapüşonlu, sporsever sarı-kırmızı | Taraftarlık sevgidir, nefret değil. |
+| 26 ✅ | SARI-KIRMIZI | SARI-LACİVERT | Orta saha atışması, skor tahmini, gol (`gol`) ya da donan final (`kapisma`) | Bu akşam 21:30, sen söyle: kim kazanır? |
+| 28 ✅ | BORÇLA DÜĞÜN | SADE DÜĞÜN | Disko toplu salon ve borç sayacı ↔ ampullü bahçe ve küçük ev; "TAKSİT" çuvalları | Ayağını yorganına göre uzat. |
+| 29 ✅ | TABLET VEREN | VAKİT AYIRAN | Koltuk ve tabletle halı ↔ park: top, uçak, kovalamaca, sarılma | Ağaç yaşken eğilir. |
+| 30 ✅ | SON GÜNCÜ | HAZIRLIKLI | 28 Ekim gecesi: "TÜKENDİ" yazan dükkânlar ↔ duvara asılan bayrak, komşuya ikinci bayrak | Cumhuriyet Bayramımız kutlu olsun! |
+| 31 ✅ | YOLCU SEÇEN | İŞİNİ SEVEN | Valizli yolcuya "kısa mesafe, gitmem" diyen ve hızlı sarmada herkesi geri çeviren taksici ↔ valizi bagaja koyup gün boyu yolcu indirip bindiren şoför; akşam 0 yolcu vs 6 yolcu | Ayağına gelen kısmeti tepme. |
+| 32 ✅ | İDARE EDEN | AÇIK KONUŞAN | İki ofis masası ve müdür kapısı: biri sessizce çalışıp dosyaların altında kalıyor, öbürü yaptıklarını yazıp kapıyı çalıyor ve zam alıyor; ▶▶ YIL 3'te 30.000 vs 36.000 TL | Ağlamayan çocuğa meme vermezler. |
+| 33 ✅ | SAYAÇ SAYAN | SORU ÇÖZEN | Duvarda "YKS'YE 234 GÜN" sayacı, iki çalışma masası: biri telefonda "takvim çıktı mı?" diye yenileyip sayaca bakıyor, öbürü test çözüyor; ▶▶ KASIM→MAYIS, sayaç 30 GÜN, soldaki panikle kalkıp ilk kitabını açıyor; 0 vs 4.160 SORU | Bugünün işini yarına bırakma. |
+| 34 ✅ | GARANTİCİ | RİSKÇİ | Aynı kese iki ele düşüyor: biri kasaya kilitleyip üstünde uyuyor, arkasındaki "ALIM GÜCÜ" çubuğu eriyor; öbürü parayı grafiğe bağlı bir platforma koyuyor, grafik çıktıkça seviniyor, düştükçe titriyor; ▶▶ YIL 3'te 100.000 TL / ALIM GÜCÜ %62 vs 165.000 TL / HUZUR %33 | Korkak bezirgân ne kâr eder ne zarar. Sen hangisisin? |
+| 35 ✅ | MEYDANA İNEN | EVDE KUTLAYAN | 29 Ekim akşamı: fenerli kalabalıkla meydanda yürüyüp üşüyen, havai fişeklerde coşan ↔ duvarda bayrak, koltukta çayla ekrandan izleyen, patlamada pencereye gidip çayını göğe kaldıran; COŞKU %100 / RAHAT %20 vs COŞKU %55 / RAHAT %100 | Bayram gönülde başlar. Sen nerede kutluyorsun? |
 
 ## Sahne akışları
 

@@ -283,7 +283,227 @@ Bu akşam kim kazanırsa kazansın, çaylar bizden! ❤️
 
 Sabit yorum: `Ben 2'yim, maçtan sonra çay bizden ☕ Sen hangisisin? Rakip takımı tutan en yakın arkadaşını etiketle 👇`
 
-> Akşam 19:00–21:00 arası, maçtan önce paylaş. İki ana karakter de aynı renkleri, arkadaşları rakip renkleri taşıyor; hiçbir takım "kötü" tarafta değil. Takım adı ve arma yok. Yorumlarda isim yazanlara cevap verirken de isim tekrarlama. Mağdurlarla dalga geçen yorumları gizle. Bu bir yatırım tavsiyesi değil, "sormadan imza atma" uyarısı.
+> Akşam 19:00–21:00 arası, maçtan önce paylaş. İki ana karakter de aynı renkleri, arkadaşları rakip renkleri taşıyor; hiçbir takım "kötü" tarafta değil. Takım adı ve arma yok.
+
+### 16. HOLİGAN ↔ SPORSEVER (`holigan.mp4`, derbi akşamı)
+
+```
+Derbi akşamı, iki salon, iki farklı taraftar. ⚽
+
+Biri gol yiyince ağzına geleni söyledi, kumandayı televizyona fırlattı.
+Arkadaşına bağırdı, arkadaşı kapıyı çekip gitti; çatlak ekranın karşısında yalnız kaldı.
+Öbürü golü gülerek karşıladı, rakip takımı tutan dostunun sırtına vurdu.
+Düdük çalınca iki çay koydu, maçı muhabbetle bitirdi. ☕
+
+Takımını sevmek için kimseden nefret etmen gerekmiyor.
+Bu akşam tribünde de evde de sporseverliği konuşturalım! ❤️💛
+
+💬 Yorumlara yaz, sen hangisisin?
+1️⃣ Holigan
+2️⃣ Sporsever
+```
+
+Sabit yorum: `Ben 2'yim, maçtan sonra çay bizden ☕ Sen hangisisin? Rakip takımı tutan en yakın arkadaşını etiketle 👇`
+
+> Holigan hiçbir takımın rengini taşımıyor (gri kapüşon); kötü taraf bir takım değil, holiganlığın kendisi. Sporsever sarı-kırmızı atkılı. Küfür sadece "#@!%" sembolleriyle ima ediliyor. Yorumlarda hakaret ve küfür içerenleri gizle.
+
+### 15. SARI-KIRMIZI ↔ SARI-LACİVERT, derbi atışması (`gol.mp4`, derbi akşamı)
+
+```
+Derbi günü, orta saha, iki taraftar karşı karşıya. ⚽🔥
+
+"Bu akşam bizim!" dedi biri. "Rüyanda görürsün!" dedi öbürü.
+Biri 3-0 dedi, öbürü 4-0. Davullar hızlandı, ikisi de topa koştu...
+Topu kapan sarı-kırmızı oldu, gerisini videoda gör. 😄
+
+Saha içinde kıyasıya, saha dışında centilmence.
+Bu akşam 21:30'da sesimiz tribünlerde, kavgamız sadece yorumlarda! ❤️💛
+
+💬 Yorumlara yaz, sen hangisisin?
+1️⃣ Sarı-kırmızı
+2️⃣ Sarı-lacivert
+```
+
+Sabit yorum: `Ben 1'im 💛❤️ Sen hangisisin? Skor tahminini de yaz, maçtan sonra bakacağız 👇`
+
+> Maçtan önce 19:00–21:00 arası paylaş. Tatlı sert bir atışma: kimse holigan ya da kötü gösterilmiyor, takım adı ve arma yok. Yorumlarda hakaret ve küfür içeren yorumları gizle; tartışma skor tahmini üzerinden kalsın. Daha tarafsız bir versiyon da var: `kapisma.mp4` (top vurulduğu an donuyor, "KİM KAZANIR?"). Yorumlarda isim yazanlara cevap verirken de isim tekrarlama. Mağdurlarla dalga geçen yorumları gizle. Bu bir yatırım tavsiyesi değil, "sormadan imza atma" uyarısı.
+
+### 17. BORÇLA DÜĞÜN ↔ SADE DÜĞÜN (`dugun.mp4`, sabah)
+
+```
+İki çift, aynı gün evleniyor. 💍
+
+Biri "el âlem ne der" dedi; dev salon, orkestra, konfeti, üç katlı pasta.
+Müzik susunca ışıklar söndü, sırtlarına iki çuval bindi: 48 ay taksit. 😅
+Öbürü bahçede, birkaç sevdiğiyle, ampullerin altında dans etti.
+Düğün bitince el ele evlerine girdiler, pencerelerinin ışığı yandı. 🏡
+
+Düğün bir gece, ev bir ömür.
+Yuvasını borçsuz kuran herkese mutluluklar! ❤️
+
+💬 Yorumlara yaz, sen hangisisin?
+1️⃣ Borçla düğün
+2️⃣ Sade düğün
+```
+
+Sabit yorum: `Ben 2'yim, bir gece için 48 ay ödemem 😄 Sen hangisisin? Sence bir düğüne en fazla ne kadar harcanmalı?`
+
+> Sabah 08:00–09:00 arası paylaş. Tartışma çıkacak bir konu; büyük düğün yapanları küçümseyen ya da kimin düğününe laf eden yorumları gizle. Videoda gerçek bir salon, marka ya da kuyumcu yok.
+
+### 18. TABLET VEREN ↔ VAKİT AYIRAN (`tablet.mp4`, öğle)
+
+```
+Akşam saatleri, iki ev, iki çocuk. 👧👦
+
+Biri yorgundu, "5 dakika sessizlik" dedi, eline tableti verdi.
+Çocuk ekrana gömüldü, o da telefonuna. Yan yana ama ayrı ayrı.
+Öbürü yorgunluğunu parka götürdü: top attılar, uçak oldular, kovalamaca oynadılar.
+Sonunda çocuk koşup boynuna sarıldı. 🤗
+
+Ekran beş dakika susturur, birlikte geçen vakit bir ömür hatırlanır.
+Yorgun da olsa çocuğuna vakit ayıran bütün annelere babalara selam olsun! 💛
+
+💬 Yorumlara yaz, sen hangisisin?
+1️⃣ Tablet veren
+2️⃣ Vakit ayıran
+```
+
+Sabit yorum: `Ben 2'yim, yorgun da olsam parka çıkarız ⚽ Sen hangisisin? Senin çocukluğunda en sevdiğin sokak oyunu neydi?`
+
+> Öğle 12:00–13:00 arası paylaş. Tablet veren ebeveyn kötü değil, yorgun gösteriliyor. Yorumlarda ebeveynleri suçlayan, "kötü anne/baba" diyen sert yorumları gizle; tartışma "ne kadar ekran süresi" üzerinden kalsın.
+
+### 19. SON GÜNCÜ ↔ HAZIRLIKLI (`bayrak.mp4`, 28 Ekim akşamı)
+
+```
+28 Ekim akşamı, saat ilerliyor. 🇹🇷
+
+Biri "daha vakit var" demişti; dükkân dükkân koştu, her yerde "TÜKENDİ".
+Kaldırıma oturdu, "yarın sabah bulurum" dedi.
+Öbürü bayrağını günler önce almıştı; astı, selam durdu.
+Sonra masasındaki ikinci bayrağı alıp komşusuna götürdü. ❤️
+
+Cumhuriyetimizin yeni yaşı kutlu olsun, bayrakları erkenden asalım! 🇹🇷
+
+💬 Yorumlara yaz, sen hangisisin?
+1️⃣ Son güncü
+2️⃣ Hazırlıklı
+```
+
+Sabit yorum: `Ben 2'yim, bayrağım çoktan balkonda 🇹🇷 Sen hangisisin? Bayrağını astın mı, fotoğrafını hikâyende paylaş 👇`
+
+> Akşam 19:00–21:00 arası paylaş (29 Ekim arifesi). Bayrak hiçbir anda bir şeyin arkasında kalmıyor, yazılar üstüne binmiyor. Kaybeden taraf da sonunda bayrağına kavuşuyor; kimse küçümsenmiyor.
+
+### 20. YOLCU SEÇEN ↔ İŞİNİ SEVEN (`taksi.mp4`, 27 Ekim akşamı)
+
+```
+Valizli bir yolcu, iki taksi. 🚕
+
+Biri "kısa mesafe, gitmem" dedi, gün boyu gelen herkesi geri çevirdi.
+Öbürü valizi bagaja kendi koydu; gün boyu yolcu indirdi, yolcu bindirdi.
+Akşam olunca biri "bugün hiç iş yok" diye söyleniyordu;
+öbürünün sayacı 6 yolcu gösteriyordu. 😄
+
+Kısa yol da yol, her yolcu bir kısmet.
+Güler yüzle, taksimetreyle çalışan bütün emektar şoförlere selam olsun! 💛
+
+💬 Yorumlara yaz, sen hangisisin?
+1️⃣ Yolcu seçen
+2️⃣ İşini seven
+```
+
+Sabit yorum: `Ben 2'yim, kısa yol da olsa giderim 🚕 Sen hangisisin? Başına gelen en güzel taksi anını yaz 👇`
+
+> Akşam 19:00–21:00 arası paylaş. Taksiciler genel olarak kötülenmiyor; sağdaki şoför de taksici ve kazanan o. Yorumlarda meslek grubunu toptan aşağılayan ya da uygulama/marka adı veren tartışmaları gizle; konu "yolcu seçmek" üzerinden kalsın.
+
+### 21. İDARE EDEN ↔ AÇIK KONUŞAN (`zam.mp4`, 28 Ekim sabahı)
+
+```
+Aynı masa, aynı iş, aynı dosyalar. 📂
+
+Biri "çalışırsam nasılsa fark ederler" dedi, hiç sesini çıkarmadı.
+Öbürü yaptıklarını bir kâğıda yazdı, kapıyı tıklattı, güler yüzle anlattı.
+Bir el sıkışma, bir zam. 🤝
+Yıllar geçti; birinin masasında dosyalar, öbürünün maaşında fark.
+
+Emeğinin hakkını istemek ayıp değil; kibarca istemek de bir beceri.
+Kendi değerini bilen, kapıyı çalmaktan korkmayan herkese selam olsun! 💛
+
+💬 Yorumlara yaz, sen hangisisin?
+1️⃣ İdare eden
+2️⃣ Açık konuşan
+```
+
+Sabit yorum: `Ben 2'yim, istemeden kimse vermiyor 🤝 Sen hangisisin? Hiç zam istedin mi, nasıl geçti? 👇`
+
+> Sabah, video hazır olunca (en geç 10:00) paylaş. Müdür kötü gösterilmiyor; listeyi okuyup el sıkışıyor. Soldaki de sonunda kendi listesini yazmaya başlıyor, kimse küçümsenmiyor. Yorumlarda gerçek şirket ya da patron adı veren, maaş rakamı üzerinden kavgaya dönen yorumları gizle; konu "istemek" üzerinden kalsın.
+
+### 22. SAYAÇ SAYAN ↔ SORU ÇÖZEN (`yks.mp4`, 28 Ekim öğlesi)
+
+```
+Duvarda aynı sayaç, iki masa. ⏳
+
+Biri telefonu elinden bırakmadı: "takvim çıksın, başlarım", "daha 230 gün var"...
+Öbürü ilk günden kalemi aldı; her gün birkaç test, sessiz sedasız.
+Aylar hızla geçti. Sayaç 30'u gösterince biri yerinden fırladı,
+öbürünün yanındaki test yığını tavana yaklaşmıştı. 📚
+
+Sınav tarihi ne zaman açıklanırsa açıklansın, hazırlık bugün başlar.
+Lambasını yakıp soru çözen bütün adaylara selam olsun, kolay gelsin! 💛
+
+💬 Yorumlara yaz, sen hangisisin?
+1️⃣ Sayaç sayan
+2️⃣ Soru çözen
+```
+
+Sabit yorum: `Ben 2'yim, bugün de 40 soru çözdüm ✏️ Sen hangisisin? Bugün kaç soru çözdün? 👇`
+
+> Öğle 13:00 civarı paylaş. Sayaçtaki 234 gün tahmini bir tarihe göre (19 Haziran 2027); ÖSYM takvimi henüz açıklanmadı, açıklamada kesin tarih verilmiyor. Soldaki aday küçümsenmiyor; sonunda oturup ilk kitabını açıyor. Yorumlarda dershane/yayın markası reklamı ya da "kesin tarih şu" diye yanlış bilgi yayan yorumları gizle.
+
+### 23. GARANTİCİ ↔ RİSKÇİ (`garanti.mp4`, 28 Ekim akşamı)
+
+```
+İkisinin de eline aynı kese düştü. 💰
+
+Biri kasaya koydu, kilitledi, üstüne oturup mışıl mışıl uyudu.
+Öbürü parasını grafiğe bağladı; çıktıkça uçtu, düştükçe uykusu kaçtı. 📈📉
+Yıllar geçti. Birinin kasasında aynı para var ama artık yarım sepet alıyor,
+öbürünün parası büyüdü ama huzurundan çok şey gitti.
+
+"Korkak bezirgân ne kâr eder ne zarar" derler; peki huzurun bedeli kaç lira?
+Parasını kendi bildiği gibi koruyan herkese selam olsun! 💛
+
+💬 Yorumlara yaz, sen hangisisin?
+1️⃣ Garantici: param güvende olsun, uykum kaçmasın
+2️⃣ Riskçi: risk almadan kazanç olmaz
+```
+
+Sabit yorum: `Ben 1'im, uykumu hiçbir getiriye değişmem 😴 Sen hangisisin? Birikimini en çok neyde tutuyorsun? 👇`
+
+> Akşam 20:00 civarı paylaş. İki taraf da kazanıyor ve kaybediyor: soldakinin alım gücü, sağdakinin huzuru eriyor; kimse küçümsenmiyor. Videoda fon, banka ya da kurum adı yok, grafik özgün. Yorumlarda belirli fon/hisse/kripto tavsiyesi veren, "şunu al" diye link bırakan ya da vergi düzenlemesini siyasete çeken yorumları gizle; konu "güven mi risk mi" üzerinden kalsın. Açıklamada yatırım tavsiyesi verme.
+
+### 24. MEYDANA İNEN ↔ EVDE KUTLAYAN (`kutlama.mp4`, 29 Ekim sabahı)
+
+```
+29 Ekim akşamı, iki ayrı kutlama. 🇹🇷
+
+Biri fenerini kaptı, meydana indi: ayakları koptu, iliklerine kadar üşüdü,
+ama havai fişekler patlayınca binlerce kişiyle aynı anda bağırdı. 🎆
+Öbürü bayrağını duvara astı, çayını demledi, kutlamayı ekrandan izledi;
+ilk patlamada pencereye koştu, çay bardağını gökyüzüne kaldırdı. ☕
+
+Birinde coşku, öbüründe huzur. Bayram meydanda mı kutlanır, evde mi?
+Nerede olursa olsun Cumhuriyet'i gönülden kutlayan herkese selam olsun! 💛
+
+Cumhuriyet Bayramımız kutlu olsun!
+
+💬 Yorumlara yaz, sen hangisisin?
+1️⃣ Meydana inen: bayram kalabalıkla güzel
+2️⃣ Evde kutlayan: bayram gönülde başlar
+```
+
+Sabit yorum: `Ben 1'im, fener alayını hiç kaçırmam 🏮 Sen hangisisin? Bu akşam nerede kutluyorsun? 👇`
+
+> Sabah, video hazır olunca (en geç 10:00) paylaş; akşamki fener alayları ve havai fişeklerden önce yayında olsun. İki taraf da bayramı kutluyor: soldakinin rahatı, sağdakinin coşkusu eksik; kimse küçümsenmiyor. Bayrak duvarda yüksekte ve elde, önünden hiçbir şey geçmiyor. Videoda parti, kurum ya da kişi adı yok. Yorumlarda bayramı siyasete çeken, "evde oturan …" diye bir grubu aşağılayan ya da kutlamayı küçümseyen yorumları gizle; konu "meydan mı ev mi" üzerinden kalsın.
 
 ## Paylaşım planı
 

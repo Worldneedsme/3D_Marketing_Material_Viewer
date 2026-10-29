@@ -1,25 +1,35 @@
 # Günlük üretim akışı
 
-Her gün 3 çöp adam videosu: **sabah**, **öğle** ve **akşam** paylaşımı için. Konular her zaman o günün Türkiye gündeminden seçilir. Konular önce onaya sunulur; onay gelmeden hiçbir şey üretilmez.
+Her gün 3 çöp adam videosu: **sabah**, **öğle** ve **akşam** paylaşımı için. Gündem günde üç kez taranır ve her taramada tek bir post hazırlanır: **08:00** sabah postu, **12:00** öğle postu, **18:00** akşam postu (her biri ayrı zamanlanmış rutin). Konular her zaman o anki Türkiye gündeminden seçilir. Konu önce onaya sunulur; onay gelmeden hiçbir şey üretilmez.
 
-## 1. Gündemi araştır (her sabah)
+## 1. Gündemi araştır (08:00, 12:00, 18:00)
 
 - X (Twitter) Türkiye gündemi: <https://trends24.in/turkey/> (X'in kendisi giriş istiyor; giriş yapma, şifre girme).
 - Gerekirse bir gündem maddesini web aramasıyla doğrula: ne oldu, ne zaman (ör. maç saati, sınav tarihi).
 - Gündemdeki maddeleri şöyle ayıkla:
-  - **Alma:** Siyaset ve parti tartışmaları, seçim sloganları, etnik kimlik ("Türk/Türkiyeli" vb.), din, göçmenler. Gerçek kişi, banka, şirket, kulüp adı ya da logosu kullanılmaz. Devlet kurumlarını aşağılayan bir şey yapılmaz.
+  - **Siyaset serbest (28.10.2026, kullanıcı isteği):** Siyasi gündem konu olabilir, ama olaydan herkesin hayatında yaşadığı bir ikilem çıkarılır. Videoda ve açıklamada kişi, parti ya da kurum adı, logosu, sloganı yok. Süren bir soruşturma ya da davadaki gerçek kişileri suçlu gösteren, iddiayı olay gibi anlatan bir şey yapılmaz (masumiyet karinesi, hakaret riski).
+  - **Alma:** Etnik kimlik ("Türk/Türkiyeli" vb.), din, göçmenler. Gerçek kişi, banka, şirket, kulüp, parti adı ya da logosu kullanılmaz. Devlet kurumlarını aşağılayan bir şey yapılmaz.
   - **Al:** Herkesin kendini bulabileceği günlük hayat, milli/özel günler, maçlar (takımlar sadece renkle ima edilir), sınavlar, ekonomiyle ilgili alışkanlıklar, gündemdeki olayların genel dersleri (kimseyi isim vermeden).
 
-## 2. Üç konu öner ve onay iste
+## 2. O saatin postu için konu öner ve onay iste
 
-Her konu için:
+O saatin postu için 2–3 aday çıkar, birini öner. Her aday için:
 
-- Saati: **Sabah** (08:00–09:00), **Öğle** (12:00–13:00), **Akşam** (19:00–21:00). Konuyu gündeme göre saate yerleştir (ör. akşam maçı varsa maç videosu akşama).
+- Paylaşım saati: **Sabah** (08:00–09:00), **Öğle** (12:00–13:00), **Akşam** (19:00–21:00). Bugün önceki taramalarda yapılan konuları tekrar etme (FIKIRLER.md).
 - Gündemdeki karşılığı (hangi trend, neden bugün).
-- İki taraf: `SOL (haksız çıkan) ↔ SAĞ (haklı çıkan)`. Başlıklar **kısa ve öz** olsun (1–2 kelime ideal, en fazla ~20 karakter).
+- İki taraf: `SOL ↔ SAĞ`, iki savunulabilir seçim (28.10.2026'ya kadar SOL haksız, SAĞ haklıydı; artık değil, aşağıya bak). Başlıklar **kısa ve öz** olsun (1–2 kelime ideal, en fazla ~20 karakter).
 - 3–4 cümlelik sahne akışı ve son yazı (mümkünse bir Türk atasözü).
+- Tek cümleyle "yorumda iki taraf ne diyecek" tahmini (tartışma neden kızışacak).
 
-Sonra kullanıcıya sor: üçünü de onaylıyor mu, hangisini değiştirmek istiyor. **Onay gelmeden sahne yazma, render alma.**
+### Tartışma dozu yüksek içerik (28.10.2026, kullanıcı isteği)
+Kanal tartışmayla büyüyor: bedelli askerlik 5,8 B beğeni / 249 yorum, borçla düğün 1,5 B / 28, holigan-sporsever 1,1 B / 27. Cevabı belli öğütler (pazartesi, balta, yetenek) 0-1 yorumda kaldı.
+- **Her aday ve her post en yüksek dozda tartışmalıdır.** Düşük/orta dozlu aday (cevabı belli öğüt) önerilmez.
+- Her konu **o anki trendden** çıkar; trende bağlamak için her zaman uğraşılır, trendsiz aday önerilmez. Konu: trenddeki olayın herkesin kendi hayatında yaşadığı bir ikilemi (bedelli ↔ askerlik, düğün ↔ ev, memleket ↔ tatil, hesabı kim öder, çocuğa telefon yaşı, arkadaşa borç, maaşı söylemek, garantili iş ↔ kendi işi).
+- **İki taraf her zaman isimli başlıkla durur** (SABREDEN ↔ SABREDEMEYEN, BEDELLİ YAPAN ↔ ASKERLİK YAPAN gibi; 1–2 kelime, en fazla ~20 karakter). Bu format değişmez.
+- SOL/SAĞ artık "haksız/haklı" değil, iki seçimdir: iki tarafın da kazancı ve bedeli gösterilir, izleyici kendini iki tarafta da bulabilir. Son yazı kesin hüküm yerine tarafa çağırır ("Sen olsan hangisi?") ya da iki tarafın da sahiplendiği bir atasözü olur. Açıklamadaki 1️⃣/2️⃣ seçenekleri de iki tarafı eşit tartar.
+- Grup aşağılanmaz, kimse küçük düşürülmez; davranış tartışılır. Yukarıdaki "Alma" listesi (etnik kimlik, din, göçmen, isim/logo) aynen geçerli; siyaset artık serbest ama isimsiz.
+
+Sonra kullanıcıya bildirim gönder ve sor: hangi aday, ya da değişiklik var mı. **Onay gelmeden sahne yazma, render alma.**
 
 ## 3. Onaydan sonra üret
 

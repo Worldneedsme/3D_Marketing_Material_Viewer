@@ -24,6 +24,17 @@ Instagram sayfası (isim, profil resmi, biyografi, açıklamalar, kapaklar): [in
 | `pazartesi` | PAZARTESİCİ ↔ BUGÜNCÜ | 13,8 sn |
 | `yetenek` | YETENEKLİ ↔ EMEKÇİ | 13,5 sn |
 | `derbi` | KÜSEN ↔ DOST KALAN | 13,5 sn |
+| `kapisma` | SARI-KIRMIZI ↔ SARI-LACİVERT (donan final, "KİM KAZANIR?") | 12,5 sn |
+| `gol` | SARI-KIRMIZI ↔ SARI-LACİVERT (sarı-kırmızı golüyle) | 13,5 sn |
+| `holigan` | HOLİGAN ↔ SPORSEVER | 13,5 sn |
+| `dugun` | BORÇLA DÜĞÜN ↔ SADE DÜĞÜN | 14 sn |
+| `tablet` | TABLET VEREN ↔ VAKİT AYIRAN | 14,5 sn |
+| `bayrak` | SON GÜNCÜ ↔ HAZIRLIKLI (28 Ekim gecesi) | 14,5 sn |
+| `taksi` | YOLCU SEÇEN ↔ İŞİNİ SEVEN | 16 sn |
+| `zam` | İDARE EDEN ↔ AÇIK KONUŞAN | 15 sn |
+| `yks` | SAYAÇ SAYAN ↔ SORU ÇÖZEN | 14,5 sn |
+| `garanti` | GARANTİCİ ↔ RİSKÇİ | 14,6 sn |
+| `kutlama` | MEYDANA İNEN ↔ EVDE KUTLAYAN (29 Ekim akşamı) | 14,5 sn |
 
 Günlük üretim akışı (her sabah gündemden 3 konu, onay, üretim): [GUNLUK.md](GUNLUK.md)
 
